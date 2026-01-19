@@ -1,0 +1,336 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  border-collapse: collapse;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: hsl(340, 19%, 20%);
+  display: block;
+  overflow: hidden;
+  font-family: sans-serif;
+  color: white;
+}
+
+.sandboxUI {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vw;
+  overflow: hidden;
+}
+.sandboxUI .navToggle {
+  position: absolute;
+  top: 15px;
+  transition: background 1s, color 1s;
+  letter-spacing: 3px;
+  height: 40px;
+  padding: 0 20px;
+  left: 15px;
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+}
+.sandboxUI .navPanel {
+  position: absolute;
+  top: 70px;
+  height: calc(100vh - 85px);
+  width: 355px;
+  transition: left 1s;
+  background-color: rgba(0, 0, 0, 0.138);
+}
+.sandboxUI .navPanel button {
+  background-color: rgba(0, 0, 0, 0.218);
+  width: 300px;
+  height: 35px;
+  margin: 10px 10px 0 45px;
+  border: none;
+  border-radius: 4px;
+  text-align: right;
+  font-size: 16px;
+  transition: background 1s;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.36);
+  cursor: pointer;
+}
+.sandboxUI .navPanel button:nth-child(1) {
+  background-color: rgba(0, 0, 0, 0.138);
+  margin: 10px 20px 0 10px;
+  height: 40px;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+.sandboxUI .navPanel button:hover {
+  background-color: rgba(0, 0, 0, 0.426);
+  transition: background 0s;
+}
+.sandboxUI .mainscreen {
+  position: absolute;
+  top: 70px;
+  right: 15px;
+  transition: width 1s, top 1s;
+  height: calc(100vh - 85px);
+  background-color: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border-radius: 8px;
+}
+.sandboxUI .mainscreen div {
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
+  position: absolute;
+  top: 120vh;
+  left: 15px;
+  transition: top 1.5s;
+  display: block;
+}
+.sandboxUI .mainscreen .pageSamplr {
+  background-color: hsl(214, 29%, 23%);
+  overflow: hidden;
+  border-radius: 8px;
+  position: absolute;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrCarousel {
+  display: block;
+  position: absolute;
+  height: calc(100% - 30px);
+  width: 500%;
+  top: 15px;
+  left: 0;
+  transition: left 0.5s;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrCarousel section {
+  background-color: rgba(255, 255, 255, 0.072);
+  margin: 0 15px 0 0;
+  display: inline-block;
+  width: 10%;
+  height: 100%;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrCarouselBtnL {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  width: 25%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrCarouselBtnR {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  height: 100%;
+  width: 25%;
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  right: 0;
+}
+.sandboxUI .mainscreen .pageDesignr {
+  background-color: hsl(318, 20%, 39%);
+  border-radius: 8px;
+}
+.sandboxUI .mainscreen .pageColeur {
+  background-color: hsl(0, 78%, 27%);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 1s, height 1s;
+  width: 50px;
+  width: 30%;
+  border-radius: 0;
+  height: calc(100% - 20px);
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: -moz-max-content;
+  height: max-content;
+  transition: height 1s, width 1s;
+  height: 100%;
+  width: 100%;
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section::-webkit-scrollbar {
+  width: 0;
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section section {
+  position: relative;
+  overflow: hidden;
+  width: 40px;
+  background-color: rgba(0, 0, 0, 0.241);
+  height: 40px;
+  margin: 10px 10px;
+  transition: height 1s, width 1s;
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section section button {
+  margin: 5px;
+  width: 40px;
+  transition: height 1s, width 1s;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.115);
+}
+.sandboxUI .sandboxSettings {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(0, 0, 0, 0.13);
+}
+
+.activehome .navToggle {
+  background-color: hsl(340, 30%, 15%);
+}
+
+.activeSamplr .navPanel div .samplrBtn {
+  background-color: hsl(214, 29%, 23%);
+  color: white;
+  font-weight: 600;
+}
+.activeSamplr .mainscreen .pageSamplr {
+  top: 15px;
+  transition: top 1s 1.5s;
+}
+.activeSamplr .navToggle {
+  background-color: hsl(214, 29%, 23%);
+}
+
+.activeDesignr .navPanel div .designrBtn {
+  background-color: hsl(318, 20%, 39%);
+  color: white;
+  font-weight: 600;
+}
+.activeDesignr .mainscreen .pageDesignr {
+  top: 15px;
+  transition: top 1s 1.5s;
+}
+.activeDesignr .navToggle {
+  background-color: hsl(318, 20%, 39%);
+}
+
+.activeColeur .navPanel div .coleurBtn {
+  background-color: hsl(0, 78%, 27%);
+  color: white;
+  font-weight: 600;
+}
+.activeColeur .mainscreen .pageColeur {
+  top: 15px;
+  transition: top 1s 1.5s;
+}
+.activeColeur .mainscreen .openPalette .coleurPalette {
+  width: 30%;
+}
+.activeColeur .mainscreen .openPalette .coleurPalette section section {
+  height: 400px;
+  width: calc(100% - 20px);
+}
+.activeColeur .mainscreen .openPalette .coleurPalette section section button {
+  height: calc(100% - 10px);
+}
+.activeColeur .mainscreen .closedPalette .coleurPalette {
+  width: 50px;
+}
+.activeColeur .mainscreen .closedPalette .coleurPalette section section {
+  height: 40px;
+  width: 50px;
+}
+.activeColeur .mainscreen .closedPalette .coleurPalette section section button {
+  height: 30px;
+}
+.activeColeur .navToggle {
+  background-color: hsl(0, 78%, 27%);
+}
+
+.sandboxToggleInactive .mainscreen {
+  width: calc(100vw - 30px);
+}
+.sandboxToggleInactive .navPanel {
+  left: -400px;
+}
+.sandboxToggleInactive .navToggle {
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.627);
+}
+
+.sandboxToggleActive .mainscreen {
+  width: calc(100vw - 400px);
+}
+.sandboxToggleActive .navPanel {
+  left: 15px;
+}
+.sandboxToggleActive .navToggle {
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.4);
+  background-color: hsl(340, 50%, 40%);
+}/*# sourceMappingURL=style.css.map */

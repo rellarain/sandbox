@@ -1,0 +1,429 @@
+@use "sass:math";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+    border-collapse: collapse;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+button {cursor: pointer;}
+
+
+// -----------------------------------------------------------------------------------------------------
+// VARIABLES
+// -----------------------------------------------------------------------------------------------------
+
+$sandboxBgColor: hsl(340, 19%, 20%);
+$sandboxAccentActive: hsl(340, 50%, 40%);
+$sandboxAccentInactive: hsl(340, 30%, 15%);
+
+
+
+$samplrBgColor: hsl(214, 29%, 23%);
+
+
+$designrBgColor: hsl(318, 20%, 39%);
+
+$coleurBgColor: hsl(0, 78%, 27%);
+
+
+// -----------------------------------------------------------------------------------------------------
+// STATIC STYLING (ALL SIZES)
+// -----------------------------------------------------------------------------------------------------
+#root {
+    width: 100vw; 
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;left: 0; 
+    background-color: $sandboxBgColor;
+    display: block;
+    overflow: hidden;
+    font-family: sans-serif;
+    color: white;
+}
+.sandboxUI {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vw;
+    overflow: hidden;
+
+    .navToggle {
+        position: absolute;
+        top: 15px;
+        transition: background 1s, color 1s;
+        letter-spacing: 3px;
+        height: 40px;
+        padding: 0 20px;
+        left: 15px;
+        font-size: 16px;
+        line-height: 40px;
+        font-weight: 600;
+        border: none;
+        border-radius: 4px;
+        text-transform: uppercase;
+        color: white;
+        cursor: pointer;
+    }
+    .navPanel {
+        position: absolute;
+        top: 70px;
+        height: calc(100vh - 85px);
+        width: 355px;
+        transition: left 1s;
+        background-color: rgba(0, 0, 0, 0.138);
+        button {
+            background-color: rgba(0, 0, 0, 0.218);
+            width: 300px;
+            height: 35px;
+            margin: 10px 10px 0 45px;
+            border: none;
+            border-radius: 4px;
+            text-align: right;
+            font-size: 16px;
+            transition: background 1s;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.36);
+            cursor: pointer;
+        }
+        button:nth-child(1) {
+            background-color: rgba(0, 0, 0, 0.138);
+            margin: 10px 20px 0 10px;
+            height: 40px;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+        button:hover {
+            background-color: rgba(0, 0, 0, 0.426);
+            transition: background 0s;
+        }
+    }
+    .mainscreen {
+        position: absolute;
+        top: 70px;
+        right: 15px;
+        transition: width 1s, top 1s;
+        height: calc(100vh - 85px);
+        background-color: rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        border-radius: 8px;
+        div {
+            width: calc(100% - 30px);
+            height: calc(100% - 30px);
+            position: absolute;
+            top: 120vh;
+            left: 15px;
+            transition: top 1.5s;
+            display: block; 
+
+        }
+        .pageSamplr {
+            background-color: $samplrBgColor;
+            overflow: hidden;
+            border-radius: 8px;
+            position: absolute;
+            .samplrCarousel {
+                display: block;
+                position: absolute;
+                height: calc(100% - 30px);
+                width: calc(500%);
+                top: 15px;
+                left: 0;
+                transition: left .5s;
+                // background-color: black;
+                section {
+                    background-color: rgba(255, 255, 255, 0.072);
+                    margin: 0 15px 0 0;
+                    display: inline-block;
+                    width: 10%;
+                    height: 100%;
+                }
+                
+                
+            }
+            .samplrCarouselBtnL {
+                background-color: rgba(255, 255, 255, 0);
+                border: none;
+                cursor: pointer;
+                height: 100%;
+                width: 25%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .samplrCarouselBtnR {
+                background-color: rgba(255, 255, 255, 0);
+                border: none;
+                height: 100%;
+                width: 25%;
+                position: absolute;
+                top: 0;
+                cursor: pointer;
+                right: 0;
+            }
+        }
+        .pageDesignr {
+            background-color: $designrBgColor;
+            border-radius: 8px;
+        }
+        .pageColeur {
+            background-color: $coleurBgColor;
+            .coleurPalette {
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition: width 1s, height 1s;
+                width: 50px;
+                width: 30%;
+                border-radius: 0;
+                height: calc(100% - 20px);
+                padding: 10px;
+                background-color: rgba(0, 0, 0, 0.3);
+                section {
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                    position: absolute; 
+                    bottom: 0;
+                    left: 0; 
+                    height: max-content; 
+                    transition: height 1s, width 1s;
+                    height: 100%;
+                    width: 100%; 
+                    &::-webkit-scrollbar {width: 0;}
+                    section {
+                        position: relative; 
+                        overflow: hidden;
+                        width: 40px;
+                        background-color: rgba(0, 0, 0, 0.241);
+                        height: 40px;
+                        margin: 10px 10px;
+                        transition: height 1s, width 1s;
+                        button {
+                            margin: 5px;
+                            width: 40px;
+                            transition: height 1s, width 1s;
+                            border: none;
+                            background-color: rgba(255, 255, 255, 0.115);
+                        }
+                        
+
+                    }
+                }
+            }
+        }
+    }
+    .sandboxSettings {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        height: 40px;
+        width: 40px;
+        background-color: rgba(0, 0, 0, 0.13);
+        
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// STATIC STYLING (HEIGHT DEPENDENT)
+// -----------------------------------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------------------------------
+// STATIC STYLING (WIDTH DEPENDENT)
+// -----------------------------------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------------------------------
+// STATIC STYLING (HEIGHT AND WIDTH DEPENDENT)
+// -----------------------------------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------------------------------
+// DYNAMIC STYLING (ALL SIZES) - DAY/NIGHT MODE, SANDBOX SELECTION, SANDBOX TOGGLE
+//       SANDBOX: navigation toggle, selection
+// -----------------------------------------------------------------------------------------------------
+
+
+
+.activehome {
+    .navToggle {background-color: $sandboxAccentInactive;}
+}
+
+.activeSamplr {
+    .navPanel {
+        div {
+            .samplrBtn {
+                background-color: $samplrBgColor;
+                color: white;
+                font-weight: 600;
+            }
+
+        }
+    }
+    .mainscreen {
+        .pageSamplr {
+            top: 15px;
+            transition: top 1s 1.5s;
+        }
+    }
+    .navToggle {background-color: $samplrBgColor;}
+    
+}
+
+.activeDesignr {
+    .navPanel {
+        div {
+            .designrBtn {
+                background-color: $designrBgColor;
+                color: white;
+                font-weight: 600;
+            }
+
+        }
+    }
+    .mainscreen {
+        .pageDesignr {
+            top: 15px;
+            transition: top 1s 1.5s;
+        }
+    }
+    .navToggle {background-color: $designrBgColor;}
+}
+
+.activeColeur {
+    .navPanel {
+        div {
+            .coleurBtn {
+                background-color: $coleurBgColor;
+                color: white;
+                font-weight: 600;
+            }
+
+        }
+    }
+    .mainscreen {
+        .pageColeur {
+            top: 15px;
+            transition: top 1s 1.5s;
+
+
+        }
+        .openPalette {
+            .coleurPalette {
+                width: 30%;
+                section {
+                    section {
+                        height: 400px;
+                        width: calc(100% - 20px);
+                        button {
+                            height: calc(100% - 10px);
+                        }
+                    }
+                }
+            }
+        }
+        .closedPalette {
+            .coleurPalette {
+                width: 50px;
+                section {
+                    section {
+                        height: 40px;
+                        width: 50px;
+                        button {
+                            height: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .navToggle {background-color: $coleurBgColor;}
+    
+}
+
+
+
+.sandboxToggleInactive {
+    .mainscreen {
+        width: calc(100vw - 30px);
+    }
+    .navPanel {
+        left: -400px;
+    }
+    .navToggle {
+        box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.627);
+    }
+}
+.sandboxToggleActive {
+    .mainscreen {
+        width: calc(100vw - 400px);
+    }
+    .navPanel {
+        left: 15px;
+    }
+    .navToggle {
+        box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.4);
+        background-color: $sandboxAccentActive;
+    }
+}
+
+
+// -----------------------------------------------------------------------------------------------------
+// DYNAMIC STYLING (HEIGHT DEPENDENT)
+// -----------------------------------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------------------------------
+// DYNAMIC STYLING (WIDTH DEPENDENT)
+// -----------------------------------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------------------------------
+// DYNAMIC STYLING (HEIGHT AND WIDTH DEPENDENT)
+// -----------------------------------------------------------------------------------------------------

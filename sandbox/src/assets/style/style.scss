@@ -62,7 +62,11 @@ $samplrBgColor: hsl(214, 29%, 23%);
 
 $designrBgColor: hsl(318, 20%, 39%);
 
+
 $coleurBgColor: hsl(0, 78%, 27%);
+
+
+$processrBgColor: hsl(141, 56%, 26%);
 
 
 // -----------------------------------------------------------------------------------------------------
@@ -136,7 +140,7 @@ $coleurBgColor: hsl(0, 78%, 27%);
             text-align: left;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 500;
+            font-weight: 600;
         }
         button:hover {
             background-color: rgba(0, 0, 0, 0.426);
@@ -152,7 +156,7 @@ $coleurBgColor: hsl(0, 78%, 27%);
         background-color: rgba(0, 0, 0, 0.2);
         overflow: hidden;
         border-radius: 8px;
-        div {
+        main {
             width: calc(100% - 30px);
             height: calc(100% - 30px);
             position: absolute;
@@ -243,18 +247,90 @@ $coleurBgColor: hsl(0, 78%, 27%);
                         height: 40px;
                         margin: 10px 10px;
                         transition: height 1s, width 1s;
+                        // display: none;
+                        
+                        
+                    }
+                    .coleurPaint {
+                        position: relative;
+                        overflow: hidden;
+                        margin: 10px 0 0 10px;
+                        transition: height 1s, width 1s;
+                        display: block;  
+                        background-color: rgba(0, 0, 0, 0.491); 
                         button {
                             margin: 5px;
-                            width: 40px;
-                            transition: height 1s, width 1s;
+                            height: 30px;
+                            width: calc(100% - 10px);
+                            background-color: rgba(255, 255, 255, 0.302);
+                            padding: 0;
                             border: none;
-                            background-color: rgba(255, 255, 255, 0.115);
+                            position: absolute;
+                            top: 0;
                         }
-                        
 
+                        fieldset {
+                            // background-color: $coleurBgColor;
+                            // background-color: white;
+                            height: 240px;
+                            transform: translateY(-0px);
+                            margin: 40px 0 0 0;
+                            display: grid;
+                            grid-template-rows: 40px 40px 40px 40px 40px 40px;
+                            .coleurScale {
+                                background-color: $coleurBgColor;
+                                margin: 5px;
+                                height: 35px;
+                                display: grid;
+                                grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+                                grid-template-rows: 35px;
+                            }
+                            .coleurScale:nth-child(2) {
+                                div:nth-child(1) {background-color: hsla(0, 0%, 0%, 0);}
+                                div:nth-child(2) {background-color: hsla(0, 0%, 0%, 0.1);}
+                                div:nth-child(3) {background-color: hsla(0, 0%, 0%, 0.2);}
+                                div:nth-child(4) {background-color: hsla(0, 0%, 0%, 0.3);}
+                                div:nth-child(5) {background-color: hsla(0, 0%, 0%, 0.4);}
+                                div:nth-child(6) {background-color: hsla(0, 0%, 0%, 0.5);}
+                                div:nth-child(7) {background-color: hsla(0, 0%, 0%, 0.6);}
+                                div:nth-child(8) {background-color: hsla(0, 0%, 0%, 0.7);}
+                                div:nth-child(9) {background-color: hsla(0, 0%, 0%, 0.8);}
+                                div:nth-child(10) {background-color: hsla(0, 0%, 0%, 0.9);}
+                            }
+                            .coleurScale:nth-child(1) {
+                                div:nth-child(10) {background-color: hsla(0, 0%, 100%, 0);}
+                                div:nth-child(9) {background-color: hsla(0, 0%, 100%, 0.1);}
+                                div:nth-child(8) {background-color: hsla(0, 0%, 100%, 0.2);}
+                                div:nth-child(7) {background-color: hsla(0, 0%, 100%, 0.3);}
+                                div:nth-child(6) {background-color: hsla(0, 0%, 100%, 0.4);}
+                                div:nth-child(5) {background-color: hsla(0, 0%, 100%, 0.5);}
+                                div:nth-child(4) {background-color: hsla(0, 0%, 100%, 0.6);}
+                                div:nth-child(3) {background-color: hsla(0, 0%, 100%, 0.7);}
+                                div:nth-child(2) {background-color: hsla(0, 0%, 100%, 0.8);}
+                                div:nth-child(1) {background-color: hsla(0, 0%, 100%, 0.9);}
+                                
+                            }
+                            input[type=range]::-webkit-slider-runnable-track {
+                                height: 20px;
+                                background-color: red;
+                            }
+                            input[type=range]::-webkit-slider-thumb {
+                                height: 20px;
+                            }
+                        }
+                        &.paintActive {
+                            height: 240px;
+                        }
+                        &.paintInactive {
+                            height: 40px;
+                        }
                     }
                 }
             }
+        }
+        .pageProcessr {
+            background-color: $processrBgColor;
+            border-radius: 8px;
         }
     }
     .sandboxSettings {
@@ -350,7 +426,19 @@ $coleurBgColor: hsl(0, 78%, 27%);
         .pageColeur {
             top: 15px;
             transition: top 1s 1.5s;
-
+            .coleurPalette {
+                color:  white;
+                section {
+                    section {
+                        button {
+                            height: calc(100% - 10px);
+                        }
+                    }
+                    .coleurPaint {
+                        height: 40px;
+                    }
+                }
+            }
 
         }
         .openPalette {
@@ -358,11 +446,11 @@ $coleurBgColor: hsl(0, 78%, 27%);
                 width: 30%;
                 section {
                     section {
-                        height: 400px;
                         width: calc(100% - 20px);
-                        button {
-                            height: calc(100% - 10px);
-                        }
+                    }
+                    .coleurPaint {
+                        width: calc(100% - 20px);
+                        
                     }
                 }
             }
@@ -372,11 +460,11 @@ $coleurBgColor: hsl(0, 78%, 27%);
                 width: 50px;
                 section {
                     section {
-                        height: 40px;
                         width: 50px;
-                        button {
-                            height: 30px;
-                        }
+                    }
+                    .coleurPaint {
+                        width: calc(100% - 20px);
+
                     }
                 }
             }
@@ -385,6 +473,27 @@ $coleurBgColor: hsl(0, 78%, 27%);
     .navToggle {background-color: $coleurBgColor;}
     
 }
+
+.activeProcessr {
+    .navPanel {
+        div {
+            .processrBtn {
+                background-color: $processrBgColor;
+                color: white;
+                font-weight: 600;
+            }
+        }
+    }
+    .mainscreen {
+        .pageProcessr {
+            top: 15px;
+            transition: top 1s 1.5s;
+        }
+    }
+    .navToggle {background-color: $processrBgColor;}
+}
+
+
 
 
 

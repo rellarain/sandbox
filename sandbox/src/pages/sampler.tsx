@@ -19,7 +19,7 @@ function Samplr() {
 
 
     return (
-        <div className="pageSamplr">
+        <main className="pageSamplr">
             <div style={elementStyle} className="samplrCarousel" >
                 <section>Page</section>
                 <section>Page</section>
@@ -33,7 +33,7 @@ function Samplr() {
             </div>
             <button className="samplrCarouselBtnL" onClick={handleCarouselLeft}>L</button>
             <button className="samplrCarouselBtnR" onClick={handleCarouselRight}>R</button>
-        </div>
+        </main>
     )
 }
 

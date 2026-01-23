@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ColeurPaint from "./components/coleur-Paint";
 
 function Coleur() {
 
@@ -11,42 +12,19 @@ function Coleur() {
     }
 
     return (
-        <div className={"pageColeur "+paletteToggle+"Palette"}>
+        <main className={"pageColeur "+paletteToggle+"Palette"}>
             <div className="coleurPalette">
                 <section>
                     <section>
                         <button onClick={handlePaletteToggle}></button>
                     </section>
-                    <section>
-                        <button onClick={handlePaletteToggle}></button>
-                    </section>
-                    <section>
-                        <button onClick={handlePaletteToggle}></button>
-                    </section>
-                    <section>
-                        <button onClick={handlePaletteToggle}></button>
-                    </section>
-                    <section>
-                        <button onClick={handlePaletteToggle}></button>
-                    </section>
-                    <section>
-                        <button onClick={handlePaletteToggle}></button>
-                    </section>
-                    <section>
-                        <button onClick={handlePaletteToggle}></button>
-                    </section>
-                    <section>
-                        <button onClick={handlePaletteToggle}></button>
-                    </section>
-                    <section>
-                        <button onClick={handlePaletteToggle}></button>
-                    </section>
-                    <section>
-                        <button onClick={handlePaletteToggle}></button>
-                    </section>
+                    <ColeurPaint/>
+                    <ColeurPaint/>
+                    <ColeurPaint/>
+                    <ColeurPaint/>
                 </section>
             </div>
-        </div>
+        </main>
     )
 }
 

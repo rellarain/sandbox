@@ -124,7 +124,7 @@ button {
   text-align: left;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .sandboxUI .navPanel button:hover {
   background-color: rgba(0, 0, 0, 0.426);
@@ -140,7 +140,7 @@ button {
   overflow: hidden;
   border-radius: 8px;
 }
-.sandboxUI .mainscreen div {
+.sandboxUI .mainscreen main {
   width: calc(100% - 30px);
   height: calc(100% - 30px);
   position: absolute;
@@ -234,12 +234,115 @@ button {
   margin: 10px 10px;
   transition: height 1s, width 1s;
 }
-.sandboxUI .mainscreen .pageColeur .coleurPalette section section button {
-  margin: 5px;
-  width: 40px;
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint {
+  position: relative;
+  overflow: hidden;
+  margin: 10px 0 0 10px;
   transition: height 1s, width 1s;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.491);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint button {
+  margin: 5px;
+  height: 30px;
+  width: calc(100% - 10px);
+  background-color: rgba(255, 255, 255, 0.302);
+  padding: 0;
   border: none;
-  background-color: rgba(255, 255, 255, 0.115);
+  position: absolute;
+  top: 0;
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset {
+  height: 240px;
+  transform: translateY(0px);
+  margin: 40px 0 0 0;
+  display: grid;
+  grid-template-rows: 40px 40px 40px 40px 40px 40px;
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale {
+  background-color: hsl(0, 78%, 27%);
+  margin: 5px;
+  height: 35px;
+  display: grid;
+  grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+  grid-template-rows: 35px;
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(2) div:nth-child(1) {
+  background-color: hsla(0, 0%, 0%, 0);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(2) div:nth-child(2) {
+  background-color: hsla(0, 0%, 0%, 0.1);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(2) div:nth-child(3) {
+  background-color: hsla(0, 0%, 0%, 0.2);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(2) div:nth-child(4) {
+  background-color: hsla(0, 0%, 0%, 0.3);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(2) div:nth-child(5) {
+  background-color: hsla(0, 0%, 0%, 0.4);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(2) div:nth-child(6) {
+  background-color: hsla(0, 0%, 0%, 0.5);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(2) div:nth-child(7) {
+  background-color: hsla(0, 0%, 0%, 0.6);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(2) div:nth-child(8) {
+  background-color: hsla(0, 0%, 0%, 0.7);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(2) div:nth-child(9) {
+  background-color: hsla(0, 0%, 0%, 0.8);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(2) div:nth-child(10) {
+  background-color: hsla(0, 0%, 0%, 0.9);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(1) div:nth-child(10) {
+  background-color: hsla(0, 0%, 100%, 0);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(1) div:nth-child(9) {
+  background-color: hsla(0, 0%, 100%, 0.1);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(1) div:nth-child(8) {
+  background-color: hsla(0, 0%, 100%, 0.2);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(1) div:nth-child(7) {
+  background-color: hsla(0, 0%, 100%, 0.3);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(1) div:nth-child(6) {
+  background-color: hsla(0, 0%, 100%, 0.4);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(1) div:nth-child(5) {
+  background-color: hsla(0, 0%, 100%, 0.5);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(1) div:nth-child(4) {
+  background-color: hsla(0, 0%, 100%, 0.6);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(1) div:nth-child(3) {
+  background-color: hsla(0, 0%, 100%, 0.7);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(1) div:nth-child(2) {
+  background-color: hsla(0, 0%, 100%, 0.8);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(1) div:nth-child(1) {
+  background-color: hsla(0, 0%, 100%, 0.9);
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset input[type=range]::-webkit-slider-runnable-track {
+  height: 20px;
+  background-color: red;
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset input[type=range]::-webkit-slider-thumb {
+  height: 20px;
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint.paintActive {
+  height: 240px;
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint.paintInactive {
+  height: 40px;
+}
+.sandboxUI .mainscreen .pageProcessr {
+  background-color: hsl(141, 56%, 26%);
+  border-radius: 8px;
 }
 .sandboxUI .sandboxSettings {
   position: absolute;
@@ -289,28 +392,48 @@ button {
   top: 15px;
   transition: top 1s 1.5s;
 }
+.activeColeur .mainscreen .pageColeur .coleurPalette {
+  color: white;
+}
+.activeColeur .mainscreen .pageColeur .coleurPalette section section button {
+  height: calc(100% - 10px);
+}
+.activeColeur .mainscreen .pageColeur .coleurPalette section .coleurPaint {
+  height: 40px;
+}
 .activeColeur .mainscreen .openPalette .coleurPalette {
   width: 30%;
 }
 .activeColeur .mainscreen .openPalette .coleurPalette section section {
-  height: 400px;
   width: calc(100% - 20px);
 }
-.activeColeur .mainscreen .openPalette .coleurPalette section section button {
-  height: calc(100% - 10px);
+.activeColeur .mainscreen .openPalette .coleurPalette section .coleurPaint {
+  width: calc(100% - 20px);
 }
 .activeColeur .mainscreen .closedPalette .coleurPalette {
   width: 50px;
 }
 .activeColeur .mainscreen .closedPalette .coleurPalette section section {
-  height: 40px;
   width: 50px;
 }
-.activeColeur .mainscreen .closedPalette .coleurPalette section section button {
-  height: 30px;
+.activeColeur .mainscreen .closedPalette .coleurPalette section .coleurPaint {
+  width: calc(100% - 20px);
 }
 .activeColeur .navToggle {
   background-color: hsl(0, 78%, 27%);
+}
+
+.activeProcessr .navPanel div .processrBtn {
+  background-color: hsl(141, 56%, 26%);
+  color: white;
+  font-weight: 600;
+}
+.activeProcessr .mainscreen .pageProcessr {
+  top: 15px;
+  transition: top 1s 1.5s;
+}
+.activeProcessr .navToggle {
+  background-color: hsl(141, 56%, 26%);
 }
 
 .sandboxToggleInactive .mainscreen {

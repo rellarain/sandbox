@@ -2,6 +2,7 @@ import { useState } from "react";
 import Samplr from "./pages/sampler";
 import Designr from "./pages/designer";
 import Coleur from "./pages/coleur";
+import Processr from "./pages/processr";
 
 function App() {
         
@@ -34,6 +35,12 @@ function App() {
         } else {setActivePage('Coleur')}
     }
 
+    function handleProcessrPage() {
+        if (activePage === "Processr") {
+            setActivePage('home');
+        } else {setActivePage('Processr')}
+    }
+
     
 
     return(
@@ -52,6 +59,9 @@ function App() {
                 <button onClick={handleDesignrPage} className="designrBtn">Designr</button>
             </div>
             <div>
+                <button onClick={handleProcessrPage} className="processrBtn">Processr</button>
+            </div>
+            <div>
                 <button></button>
             </div>
         </nav>
@@ -59,6 +69,7 @@ function App() {
             <Samplr/>
             <Designr/>
             <Coleur/>
+            <Processr/>
         </main>
         <form className="sandboxSettings" action="">settings</form>
     </div>

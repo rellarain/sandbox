@@ -4,9 +4,20 @@ function Designr() {
 
 
     return (
-        <div className="pageDesignr">
-            
-        </div>
+        <main className="pageDesignr">
+            <br/>
+            <br/>
+            <br/> - 
+            <br/> - 
+            <br/> - 
+            <br/> - 
+            <br/> - 
+            <br/> - 
+            <br/> - 
+            <br/> - 
+            <br/>
+            <br/>
+        </main>
     )
 }
 

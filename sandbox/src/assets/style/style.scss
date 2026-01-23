@@ -65,6 +65,29 @@ $designrBgColor: hsl(318, 20%, 39%);
 
 $coleurBgColor: hsl(0, 78%, 27%);
 
+$coleurWhite0: hsla(0, 0%, 100%, 0.0);
+$coleurWhite1: hsla(0, 0%, 100%, 0.1);
+$coleurWhite2: hsla(0, 0%, 100%, 0.2);
+$coleurWhite3: hsla(0, 0%, 100%, 0.3);
+$coleurWhite4: hsla(0, 0%, 100%, 0.4);
+$coleurWhite5: hsla(0, 0%, 100%, 0.5);
+$coleurWhite6: hsla(0, 0%, 100%, 0.6);
+$coleurWhite7: hsla(0, 0%, 100%, 0.7);
+$coleurWhite8: hsla(0, 0%, 100%, 0.8);
+$coleurWhite9: hsla(0, 0%, 100%, 0.9);
+
+$coleurBlack0: hsla(0, 0%, 0%, 0.0);
+$coleurBlack1: hsla(0, 0%, 0%, 0.1);
+$coleurBlack2: hsla(0, 0%, 0%, 0.2);
+$coleurBlack3: hsla(0, 0%, 0%, 0.3);
+$coleurBlack4: hsla(0, 0%, 0%, 0.4);
+$coleurBlack5: hsla(0, 0%, 0%, 0.5);
+$coleurBlack6: hsla(0, 0%, 0%, 0.6);
+$coleurBlack7: hsla(0, 0%, 0%, 0.7);
+$coleurBlack8: hsla(0, 0%, 0%, 0.8);
+$coleurBlack9: hsla(0, 0%, 0%, 0.9);
+
+
 
 $processrBgColor: hsl(141, 56%, 26%);
 
@@ -286,28 +309,28 @@ $processrBgColor: hsl(141, 56%, 26%);
                                 grid-template-rows: 35px;
                             }
                             .coleurScale:nth-child(2) {
-                                div:nth-child(1) {background-color: hsla(0, 0%, 0%, 0);}
-                                div:nth-child(2) {background-color: hsla(0, 0%, 0%, 0.1);}
-                                div:nth-child(3) {background-color: hsla(0, 0%, 0%, 0.2);}
-                                div:nth-child(4) {background-color: hsla(0, 0%, 0%, 0.3);}
-                                div:nth-child(5) {background-color: hsla(0, 0%, 0%, 0.4);}
-                                div:nth-child(6) {background-color: hsla(0, 0%, 0%, 0.5);}
-                                div:nth-child(7) {background-color: hsla(0, 0%, 0%, 0.6);}
-                                div:nth-child(8) {background-color: hsla(0, 0%, 0%, 0.7);}
-                                div:nth-child(9) {background-color: hsla(0, 0%, 0%, 0.8);}
-                                div:nth-child(10) {background-color: hsla(0, 0%, 0%, 0.9);}
+                                div:nth-child(1) {background-color: $coleurBlack0;}
+                                div:nth-child(2) {background-color: $coleurBlack1;}
+                                div:nth-child(3) {background-color: $coleurBlack2;}
+                                div:nth-child(4) {background-color: $coleurBlack3;}
+                                div:nth-child(5) {background-color: $coleurBlack4;}
+                                div:nth-child(6) {background-color: $coleurBlack5;}
+                                div:nth-child(7) {background-color: $coleurBlack6;}
+                                div:nth-child(8) {background-color: $coleurBlack7;}
+                                div:nth-child(9) {background-color: $coleurBlack8;}
+                                div:nth-child(10) {background-color: $coleurBlack9;}
                             }
                             .coleurScale:nth-child(1) {
-                                div:nth-child(10) {background-color: hsla(0, 0%, 100%, 0);}
-                                div:nth-child(9) {background-color: hsla(0, 0%, 100%, 0.1);}
-                                div:nth-child(8) {background-color: hsla(0, 0%, 100%, 0.2);}
-                                div:nth-child(7) {background-color: hsla(0, 0%, 100%, 0.3);}
-                                div:nth-child(6) {background-color: hsla(0, 0%, 100%, 0.4);}
-                                div:nth-child(5) {background-color: hsla(0, 0%, 100%, 0.5);}
-                                div:nth-child(4) {background-color: hsla(0, 0%, 100%, 0.6);}
-                                div:nth-child(3) {background-color: hsla(0, 0%, 100%, 0.7);}
-                                div:nth-child(2) {background-color: hsla(0, 0%, 100%, 0.8);}
-                                div:nth-child(1) {background-color: hsla(0, 0%, 100%, 0.9);}
+                                div:nth-child(1) {background-color: $coleurWhite9;}
+                                div:nth-child(2) {background-color: $coleurWhite8;}
+                                div:nth-child(3) {background-color: $coleurWhite7;}
+                                div:nth-child(4) {background-color: $coleurWhite6;}
+                                div:nth-child(5) {background-color: $coleurWhite5;}
+                                div:nth-child(6) {background-color: $coleurWhite4;}
+                                div:nth-child(7) {background-color: $coleurWhite3;}
+                                div:nth-child(8) {background-color: $coleurWhite2;}
+                                div:nth-child(9) {background-color: $coleurWhite1;}
+                                div:nth-child(10) {background-color: $coleurWhite0;}
                                 
                             }
                             input[type=range]::-webkit-slider-runnable-track {

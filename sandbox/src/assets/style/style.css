@@ -74,7 +74,7 @@ button {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
   overflow: hidden;
 }
 .sandboxUI .navToggle {
@@ -196,7 +196,7 @@ button {
   border-radius: 8px;
 }
 .sandboxUI .mainscreen .pageColeur {
-  background-color: hsl(0, 78%, 27%);
+  background-color: hsl(0, 0%, 18%);
 }
 .sandboxUI .mainscreen .pageColeur .coleurPalette {
   position: absolute;
@@ -240,7 +240,7 @@ button {
   margin: 10px 0 0 10px;
   transition: height 1s, width 1s;
   display: block;
-  background-color: rgba(0, 0, 0, 0.491);
+  background-color: hsla(0, 0%, 0%, 0.2);
 }
 .sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint button {
   margin: 5px;
@@ -260,7 +260,7 @@ button {
   grid-template-rows: 40px 40px 40px 40px 40px 40px;
 }
 .sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale {
-  background-color: hsl(0, 78%, 27%);
+  background-color: hsl(0, 0%, 18%);
   margin: 5px;
   height: 35px;
   display: grid;
@@ -327,12 +327,34 @@ button {
 .sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset .coleurScale:nth-child(1) div:nth-child(10) {
   background-color: hsla(0, 0%, 100%, 0);
 }
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset input[type=range] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  margin: 5px 0 5px 10px;
+  width: calc(100% - 20px);
+  height: 30px;
+}
+.sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset input[type=range]:focus {
+  outline: none;
+}
 .sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset input[type=range]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  box-shadow: none;
   height: 20px;
-  background-color: red;
+  background-color: hsla(0, 0%, 100%, 0.3);
 }
 .sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint fieldset input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
   height: 20px;
+  border-radius: 0;
+  cursor: pointer;
+  width: 30px;
+  border: none;
+  background-color: green;
 }
 .sandboxUI .mainscreen .pageColeur .coleurPalette section .coleurPaint.paintActive {
   height: 240px;
@@ -384,7 +406,7 @@ button {
 }
 
 .activeColeur .navPanel div .coleurBtn {
-  background-color: hsl(0, 78%, 27%);
+  background-color: hsl(0, 0%, 18%);
   color: white;
   font-weight: 600;
 }
@@ -420,7 +442,7 @@ button {
   width: calc(100% - 20px);
 }
 .activeColeur .navToggle {
-  background-color: hsl(0, 78%, 27%);
+  background-color: hsl(0, 0%, 18%);
 }
 
 .activeProcessr .navPanel div .processrBtn {

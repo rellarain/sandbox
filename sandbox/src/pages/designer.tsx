@@ -7,7 +7,7 @@ function Designr() {
         <main className="pageDesignr">
             <br/>
             <br/>
-            <br/> - 
+            <br/> - interactive GUI editor
             <br/> - 
             <br/> - 
             <br/> - 

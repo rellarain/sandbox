@@ -1,4 +1,9 @@
 @use "sass:math";
+@use 'input-range-scss' with (
+    $track-color: hsl(168, 46%, 29%),
+    $thumb-color: hsl(216, 59%, 35%)
+);
+
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -63,7 +68,7 @@ $samplrBgColor: hsl(214, 29%, 23%);
 $designrBgColor: hsl(318, 20%, 39%);
 
 
-$coleurBgColor: hsl(0, 78%, 27%);
+$coleurBgColor: hsl(0, 0%, 18%);
 
 $coleurWhite0: hsla(0, 0%, 100%, 0.0);
 $coleurWhite1: hsla(0, 0%, 100%, 0.1);
@@ -114,7 +119,7 @@ $processrBgColor: hsl(141, 56%, 26%);
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vw;
+    height: 100vh;
     overflow: hidden;
 
     .navToggle {
@@ -280,7 +285,7 @@ $processrBgColor: hsl(141, 56%, 26%);
                         margin: 10px 0 0 10px;
                         transition: height 1s, width 1s;
                         display: block;  
-                        background-color: rgba(0, 0, 0, 0.491); 
+                        background-color: $coleurBlack2; 
                         button {
                             margin: 5px;
                             height: 30px;
@@ -293,8 +298,7 @@ $processrBgColor: hsl(141, 56%, 26%);
                         }
 
                         fieldset {
-                            // background-color: $coleurBgColor;
-                            // background-color: white;
+                            // background-color: rgb(147, 147, 74);
                             height: 240px;
                             transform: translateY(-0px);
                             margin: 40px 0 0 0;
@@ -333,12 +337,31 @@ $processrBgColor: hsl(141, 56%, 26%);
                                 div:nth-child(10) {background-color: $coleurWhite0;}
                                 
                             }
+                            input[type=range] {
+                                appearance: none;
+                                margin: 5px 0 5px 10px;
+                                width: calc(100% - 20px);
+                                height: 30px;
+                            }
+                            input[type=range]:focus {
+                                outline: none;
+                            }
                             input[type=range]::-webkit-slider-runnable-track {
+                                appearance: none;
+                                cursor: pointer;
+                                box-shadow: none;
                                 height: 20px;
-                                background-color: red;
+                                // background-color: white;
+                                background-color: $coleurWhite3;
                             }
                             input[type=range]::-webkit-slider-thumb {
+                                appearance: none;
                                 height: 20px;
+                                border-radius: 0;
+                                cursor: pointer;
+                                width: 30px;
+                                border: none;
+                                background-color: green;
                             }
                         }
                         &.paintActive {

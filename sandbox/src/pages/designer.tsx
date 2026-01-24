@@ -17,11 +17,7 @@ function Designr() {
             <br/> - 
             <br/>
             <br/>
-            <nav>
-                <button></button>
-                <button></button>
-                <button></button>
-            </nav>
+
         </main>
     )
 }

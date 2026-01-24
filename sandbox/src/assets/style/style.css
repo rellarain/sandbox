@@ -338,7 +338,11 @@ button {
   top: 0;
   right: 0;
   height: 40px;
-  width: 200px;
+}
+.sandboxUI .mainscreen .pageSketchr nav button {
+  width: 30px;
+  height: 30px;
+  margin: 5px 5px 0 0;
 }
 .sandboxUI .sandboxSettings {
   position: absolute;

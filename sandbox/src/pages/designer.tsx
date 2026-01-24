@@ -8,7 +8,7 @@ function Designr() {
             <br/>
             <br/>
             <br/> - interactive GUI editor
-            <br/> - 
+            <br/> - uses colors from Coleur for components/pages
             <br/> - 
             <br/> - 
             <br/> - 
@@ -17,6 +17,11 @@ function Designr() {
             <br/> - 
             <br/>
             <br/>
+            <nav>
+                <button></button>
+                <button></button>
+                <button></button>
+            </nav>
         </main>
     )
 }

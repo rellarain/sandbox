@@ -155,42 +155,6 @@ button {
   border-radius: 8px;
   position: absolute;
 }
-.sandboxUI .mainscreen .pageSamplr .samplrCarousel {
-  display: block;
-  position: absolute;
-  height: calc(100% - 30px);
-  width: 500%;
-  top: 15px;
-  left: 0;
-  transition: left 0.5s;
-}
-.sandboxUI .mainscreen .pageSamplr .samplrCarousel section {
-  background-color: rgba(255, 255, 255, 0.072);
-  margin: 0 15px 0 0;
-  display: inline-block;
-  width: 10%;
-  height: 100%;
-}
-.sandboxUI .mainscreen .pageSamplr .samplrCarouselBtnL {
-  background-color: rgba(255, 255, 255, 0);
-  border: none;
-  cursor: pointer;
-  height: 100%;
-  width: 25%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.sandboxUI .mainscreen .pageSamplr .samplrCarouselBtnR {
-  background-color: rgba(255, 255, 255, 0);
-  border: none;
-  height: 100%;
-  width: 25%;
-  position: absolute;
-  top: 0;
-  cursor: pointer;
-  right: 0;
-}
 .sandboxUI .mainscreen .pageDesignr {
   background-color: hsl(318, 20%, 39%);
   border-radius: 8px;
@@ -366,13 +330,68 @@ button {
   background-color: hsl(141, 56%, 26%);
   border-radius: 8px;
 }
+.sandboxUI .mainscreen .pageSketchr {
+  background-color: hsl(0, 0%, 50%);
+}
+.sandboxUI .mainscreen .pageSketchr nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 40px;
+  width: 200px;
+}
 .sandboxUI .sandboxSettings {
   position: absolute;
   top: 15px;
   right: 15px;
   height: 40px;
-  width: 40px;
+  width: 500px;
   background-color: rgba(0, 0, 0, 0.13);
+}
+.sandboxUI .sandboxSettings .dayNightToggle {
+  width: 40px;
+  height: 24px;
+  margin: 8px;
+  right: 0;
+  position: absolute;
+  border-radius: 4px;
+  border: none;
+}
+.sandboxUI .sandboxSettings .dayNightToggle div {
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  position: absolute;
+  top: 5px;
+  transition: background 1s, left 0.6s;
+}
+.sandboxUI .sandboxSettings .dayNightToggle div:nth-child(1) {
+  left: 5px;
+}
+.sandboxUI .sandboxSettings .dayNightToggle div:nth-child(2) {
+  right: 5px;
+}
+
+.dayMode .sandboxSettings .dayNightToggle {
+  background-color: rgb(98, 180, 238);
+}
+.dayMode .sandboxSettings .dayNightToggle div:nth-child(2) {
+  background-color: yellow;
+  left: 20px;
+}
+.dayMode .sandboxSettings .dayNightToggle div:nth-child(1) {
+  background-color: rgb(98, 180, 238);
+}
+
+.nightMode .sandboxSettings .dayNightToggle {
+  background-color: black;
+}
+.nightMode .sandboxSettings .dayNightToggle div:nth-child(2) {
+  background-color: black;
+  left: 10px;
+}
+.nightMode .sandboxSettings .dayNightToggle div:nth-child(1) {
+  background-color: white;
 }
 
 .activehome .navToggle {
@@ -456,6 +475,16 @@ button {
 }
 .activeProcessr .navToggle {
   background-color: hsl(141, 56%, 26%);
+}
+
+.activeSketchr .navPanel div .sketchrBtn {
+  background-color: hsl(0, 0%, 50%);
+  color: white;
+  font-weight: 600;
+}
+.activeSketchr .mainscreen .pageSketchr {
+  top: 15px;
+  transition: top 1s 1.5s;
 }
 
 .sandboxToggleInactive .mainscreen {

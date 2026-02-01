@@ -2,7 +2,24 @@ import { useState } from "react";
 
 function Samplr() {
 
+    const [timeOfDay,setTimeOfDay] = useState<number>(10)
+    const [phaseOfDay,setPhaseOfDay] = useState<string>("morning");
 
+    function handleTimeCalc() {
+        if (2 >= timeOfDay  || timeOfDay >= 22) {
+            setPhaseOfDay("night");
+        } else if (timeOfDay > 2 && timeOfDay >= 6) {
+            setPhaseOfDay("dawn");
+        } else if (timeOfDay > 6 && timeOfDay >= 10) {
+            setPhaseOfDay("morning");
+        } else if (timeOfDay > 10 && timeOfDay >= 14) {
+            setPhaseOfDay("noon");
+        } else if (timeOfDay > 14 && timeOfDay >= 18) {
+            setPhaseOfDay("afternoon");
+        } else if (timeOfDay > 18 && timeOfDay >= 22) {
+            setPhaseOfDay("evening");
+        }
+    }
 
     return (
         <main className="pageSamplr">
@@ -29,8 +46,15 @@ function Samplr() {
                 </div>
                 <div className="samplrComponents">
                     <section>
-                        <div className="timeOfDayToggle">
-                            <button>
+                        <div className={"timeOfDayToggle "+phaseOfDay}>
+                            <button onClick={handleTimeCalc}>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
                                 <div></div>
                                 <div></div>
                                 <div></div>
@@ -38,7 +62,7 @@ function Samplr() {
                                 <div></div>
                                 <div></div>
                             </button>
-                            <div>time</div>
+                            <div>{timeOfDay}</div>
                         </div>
 
                     </section>

@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { ButtonHTMLAttributes, MouseEventHandler, useState, useEffect } from "react";
 import Samplr from "./pages/sampler";
 import Designr from "./pages/designer";
 import Coleur from "./pages/coleur";
 import Processr from "./pages/processr";
 import Sketchr from "./pages/experimentr";
 import Scriblr from "./pages/scriblr";
+import useWindowDimensions from "./assets/functionality/viewport";
+
 
 function App() {
+
+
+    
         
     const [sandboxToggleState, setSandboxToggleState] = useState("Inactive");
     function handleSandboxToggle() {
@@ -14,6 +19,8 @@ function App() {
             setSandboxToggleState('Active');
         } else {setSandboxToggleState('Inactive')}
     }
+
+    
 
 
 
@@ -58,11 +65,105 @@ function App() {
             setLightMode("night")
         } else {setLightMode("day")}
     } 
+
+    // ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
+    // NEW SANDBOX
+    // ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
+
+    const {viewportWidth, viewportHeight} = useWindowDimensions();
+    let viewportColumns = Math.floor(viewportWidth / 400);
+    let viewportRows = Math.floor(viewportHeight / 400);
+
+
+
+    // ----------------------------------------------------------------------------
+    // SIZE AND SIDE CONTROLS
+    // ----------------------------------------------------------------------------
+
+
+    const [controlSide, setControlSide] = useState<string>('right');
+    const [controlSize, setControlSize] = useState<string>('mini');
+    let controlState = `${controlSize+'Control '+ controlSide +'Control'}`;
+
+    function handleControlSide() {
+        if (controlSide === 'right') {
+            setControlSide('left')
+        } else {setControlSide('right')}
+    }
+    function handleControlSize() {
+        if (controlSize === 'mini') {
+            setControlSize('max')
+        } else {setControlSize('mini')}    
+    }
+
+    // ----------------------------------------------------------------------------
+    // COLOR SCHEME DEFINITION
+    // ----------------------------------------------------------------------------
     
 
+    let colors: number[][] = [[0,40,50,1],[60,40,50,1],[120,40,50,1],[180,40,50,1],[240,40,50,1],[300,40,50,1]]
+
+
+    // ----------------------------------------------------------------------------
+    // Time and Date !!!!!!!!!!!!!!!!----BROKEN
+    // ----------------------------------------------------------------------------
+
+    const now: Date = new Date();
+    function formatDate(date: number | Date | undefined) {
+        return new Intl.DateTimeFormat('en-us', {weekday: 'long', month: 'short', day: '2-digit', year:'numeric'}).format(date);
+    }
+
+    let nowHours: number = new Date().getHours();
+    let [defaultHourPhase,setDefaultHourPhase]=useState<string>('');
+    useEffect(() => {
+        if (nowHours >= 2 && nowHours < 6) {
+            defaultHourPhase = "dawn";
+        } else if (nowHours >= 6 && nowHours < 10) {
+            defaultHourPhase = "morning";
+        } else if (nowHours >= 10 && nowHours < 14) {
+            defaultHourPhase = "noon";
+        } else if (nowHours >= 14 && nowHours < 18) {
+            defaultHourPhase = "afternoon";
+        } else if (nowHours >= 18 && nowHours < 22) {
+            defaultHourPhase = "evening";
+        } else {defaultHourPhase = 'night'}
+        console.log(defaultHourPhase)
+        setDefaultHourPhase(defaultHourPhase)
+    },[])
+    
+    let [hoursPhase,setHoursPhase] = useState<string>(defaultHourPhase)
+    const [phaseState,setPhaseState] = useState<string>(hoursPhase)
+    
+    console.log(hoursPhase);
+    
+    function handleHourPhaseToggle() {
+        setHoursPhase(defaultHourPhase);
+        
+    }
+
+    function handlePhaseToggle() {
+        if (phaseState === 'night') {
+            setPhaseState('dawn')
+        } else if (phaseState === 'dawn') {
+            setPhaseState('morning')
+        } else if (phaseState === 'morning') {
+            setPhaseState('noon')
+        } else if (phaseState === 'noon') {
+            setPhaseState('afternoon')
+        } else if (phaseState === 'afternoon') {
+            setPhaseState('evening')
+        } else {setPhaseState('night')}
+    }
+
+
+
+
+
     return(
-    <div className={"sandboxUI active"+activePage+" sandboxToggle"+sandboxToggleState+" "+lightMode+"Mode"}>
-        <button className="navToggle" onClick={handleSandboxToggle}>{activePage}</button>
+    <div className={"sandboxUI active"+activePage+" sandboxToggle"+sandboxToggleState+" "+lightMode+"Mode "+controlState+" "+phaseState+"Phase"}>
+        <button className="navToggle" onClick={handleSandboxToggle}>{activePage+" "+viewportColumns+", "+viewportRows}</button>
         <nav className="navPanel">
             <div>
                 <button onClick={handleColeurPage} className="coleurBtn">Coleur</button>
@@ -110,7 +211,184 @@ function App() {
                 <div></div>
             </button>
         </div>
+
+        {/* NEW SANDBOX */} 
+
+        <SandboxControl 
+            setControlSideHandler={handleControlSide}
+            controlSideState = {controlSide}
+            setControlSizeHandler={handleControlSize}
+            controlSizeState= {controlSize}
+            colorsHandler = {colors}
+            currentHourState={nowHours}
+            setPhaseStateHandler={handlePhaseToggle}
+            setHourStateHandler={handleHourPhaseToggle}
+            currentPhaseState={phaseState}
+            currentHourPhase={hoursPhase}
+            
+            />
+        <SandboxControl 
+            setControlSideHandler={handleControlSide}
+            controlSideState = {controlSide}
+            setControlSizeHandler={handleControlSize}
+            controlSizeState= {controlSize}
+            colorsHandler = {colors}
+            currentHourState={nowHours}
+            setPhaseStateHandler={handlePhaseToggle}
+            setHourStateHandler={handleHourPhaseToggle}
+            currentPhaseState={phaseState}
+            currentHourPhase={hoursPhase}
+
+
+        />
     </div>
 )}
+
+
+
+
+
+
+
+
+// ----------------------------------------------------------------------------
+// SANDBOX CONTROL COMPONENT
+// ----------------------------------------------------------------------------
+
+
+
+interface parentState {
+    setControlSideHandler: (controlSide : string) => void
+    controlSideState: string
+    setControlSizeHandler: (controlSize : string) => void
+    controlSizeState: string
+    setPhaseStateHandler: (phaseState : string) => void
+    currentPhaseState: string
+    setHourStateHandler: (nowHours: number) => void
+    currentHourState: number
+    currentHourPhase: string
+    
+    colorsHandler: number[][]
+}
+
+
+const SandboxControl: React.FC<parentState> = ({setControlSideHandler, controlSideState, setControlSizeHandler, currentHourPhase, controlSizeState, setPhaseStateHandler, currentPhaseState, setHourStateHandler, currentHourState, colorsHandler}) => {
+
+    function handleClickSize() {
+        if (controlSizeState === 'mini') {
+            setControlSizeHandler('max');
+        } else {setControlSizeHandler('mini')}
+    }
+    function handleClickSide() {
+        if (controlSideState === 'right') {
+            setControlSideHandler('left');
+        } else {setControlSideHandler('right')}
+        
+    }
+
+    function handleHourPhaseToggle() {
+        setPhaseStateHandler(currentHourPhase)
+    }
+    function handleManualPhaseToggle() {
+        if (currentPhaseState === 'night') {
+            setPhaseStateHandler('dawn')
+        } else if (currentPhaseState === 'dawn') {
+            setPhaseStateHandler('morning')
+        } else if (currentPhaseState === 'morning') {
+            setPhaseStateHandler('noon')
+        } else if (currentPhaseState === 'noon') {
+            setPhaseStateHandler('afternoon')
+        } else if (currentPhaseState === 'afternoon') {
+            setPhaseStateHandler('evening')
+        } else {setPhaseStateHandler('night')}
+    }
+    
+
+
+
+
+    // ----------------------------------------------------------------------------
+    // Colors
+    // ----------------------------------------------------------------------------
+
+    let paints: number[][] = colorsHandler;
+
+    let paint1 = `${"hsla("+paints[0][0]+", "+paints[0][1]+"%, "+paints[0][2]+"%, "+paints[0][3]+")"}`;
+    let paint2 = `${"hsla("+paints[1][0]+", "+paints[1][1]+"%, "+paints[1][2]+"%, "+paints[1][3]+")"}`;
+    let paint3 = `${"hsla("+paints[2][0]+", "+paints[2][1]+"%, "+paints[2][2]+"%, "+paints[2][3]+")"}`;
+    let paint4 = `${"hsla("+paints[3][0]+", "+paints[3][1]+"%, "+paints[3][2]+"%, "+paints[3][3]+")"}`;
+    let paint5 = `${"hsla("+paints[4][0]+", "+paints[4][1]+"%, "+paints[4][2]+"%, "+paints[4][3]+")"}`;
+    let paint6 = `${"hsla("+paints[5][0]+", "+paints[5][1]+"%, "+paints[5][2]+"%, "+paints[5][3]+")"}`;
+    // console.log(paints);
+    
+
+
+    return(
+
+        <div className={'sandboxControl'}>
+            <button onClick={handleClickSize} className="controlSizeToggle">+/-</button>
+            <div className="timeOfDayComponent">
+                <button onClick={handleManualPhaseToggle}></button>
+                <button onClick={handleHourPhaseToggle}>{currentHourState}</button>
+            </div>
+            <ColorPallete/>
+            <button onClick={handleClickSide} className="controlSideToggle">L/R</button>
+        </div>
+
+    )
+}
+
+function ColorPallete() {
+
+    function ColorScale() {
+    
+    
+        return(
+    
+            <div className={'colorScale'}>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+    
+        )
+    }
+
+    function PalettePaint() {
+
+
+        return (
+            <div >
+                <ColorScale/>
+                <ColorScale/>
+                <input type="range" name="paintHue" min={0} max={359}/>
+                <input type="range" name="paintSat" min={0} max={100}/>
+                <input type="range" name="paintLight" min={0} max={100}/>
+            </div>
+        )
+    }
+
+
+    return(
+
+        <div className={'colorPalette'}>
+            <PalettePaint/>
+            <PalettePaint/>
+            <PalettePaint/>
+            <PalettePaint/>
+            <PalettePaint/>
+            <PalettePaint/>
+        </div>
+
+    )
+}
+
 
 export default App;

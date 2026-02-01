@@ -78,6 +78,7 @@ button {
   overflow: hidden;
 }
 .sandboxUI .navToggle {
+  display: none;
   position: absolute;
   top: 15px;
   transition: background 1s, color 1s;
@@ -95,6 +96,7 @@ button {
   cursor: pointer;
 }
 .sandboxUI .navPanel {
+  display: none;
   position: absolute;
   top: 70px;
   height: calc(100vh - 85px);
@@ -131,6 +133,7 @@ button {
   transition: background 0s;
 }
 .sandboxUI .mainscreen {
+  display: none;
   position: absolute;
   top: 70px;
   right: 15px;
@@ -193,24 +196,24 @@ button {
 .sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle {
   background-color: hsla(0, 0%, 0%, 0.2);
   width: 200px;
-  height: 40px;
+  height: 50px;
   margin: 15px;
   display: flex;
   flex-direction: row;
   position: absolute;
 }
 .sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button {
-  height: 30px;
+  height: 40px;
   width: 120px;
   margin: 5px;
   background-color: skyblue;
   background-color: black;
+  overflow: hidden;
   border: none;
+  border-radius: 4px;
   position: absolute;
   padding: 0;
-  display: grid;
-  grid-template-columns: 20px 20px 20px 20px 20px 20px;
-  grid-template-areas: "1 2 3 4 5 6";
+  display: block;
 }
 .sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div {
   width: 15px;
@@ -232,20 +235,102 @@ button {
 }
 .sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(3) {
   background-color: yellow;
+  top: 7.5px;
+  left: 12px;
 }
 .sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(4) {
   background-color: green;
+  top: 7.5px;
+  left: 12px;
 }
 .sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(5) {
   background-color: blue;
+  top: 7.5px;
+  left: 12px;
 }
 .sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(6) {
   background-color: violet;
+  top: 7.5px;
+  left: 12px;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(7) {
+  background-color: white;
+  top: 7.5px;
+  left: 12px;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(8) {
+  background-color: white;
+  top: 7.5px;
+  left: 12px;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(9) {
+  background-color: white;
+  top: 7.5px;
+  left: 12px;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(10) {
+  background-color: white;
+  top: 7.5px;
+  left: 12px;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(11) {
+  background-color: white;
+  top: 7.5px;
+  left: 12px;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(12) {
+  background-color: white;
+  top: 7.5px;
+  left: 12px;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(13) {
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  bottom: -7.5px;
+  right: -10px;
 }
 .sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle div {
   position: absolute;
   right: 5px;
   margin: 10px 0;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle.dawn button {
+  background-color: rgb(114, 143, 180);
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle.dawn button div:nth-child(1) {
+  background-color: white;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle.morning button {
+  background-color: black;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle.morning button div:nth-child(1) {
+  background-color: white;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle.noon button {
+  background-color: black;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle.noon button div:nth-child(1) {
+  background-color: white;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle.afternoon button {
+  background-color: black;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle.afternoon button div:nth-child(1) {
+  background-color: white;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle.evening button {
+  background-color: black;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle.evening button div:nth-child(1) {
+  background-color: white;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle.night button {
+  background-color: black;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle.night button div:nth-child(1) {
+  background-color: white;
 }
 .sandboxUI .mainscreen .pageDesignr {
   background-color: hsl(318, 20%, 39%);
@@ -589,6 +674,7 @@ button {
   height: 100%;
 }
 .sandboxUI .sandboxSettings {
+  display: none;
   position: absolute;
   top: 15px;
   right: 15px;
@@ -619,6 +705,67 @@ button {
 .sandboxUI .sandboxSettings .dayNightToggle div:nth-child(2) {
   right: 5px;
 }
+.sandboxUI .sandboxControl {
+  position: absolute;
+  top: 0;
+  width: 25vw;
+  height: 100vh;
+  background-color: hsla(0, 0%, 0%, 0.2);
+  transition: left 1s, right 1s, width 1s;
+}
+.sandboxUI .sandboxControl .controlSizeToggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 50px;
+  width: 100%;
+}
+.sandboxUI .sandboxControl .controlSideToggle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 20vh;
+  width: 100%;
+}
+.sandboxUI .sandboxControl .timeOfDayComponent {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  height: 20vh;
+  background-color: green;
+}
+.sandboxUI .sandboxControl .timeOfDayComponent button:nth-of-type(1) {
+  height: calc(20vh - 40px);
+  width: 100%;
+}
+.sandboxUI .sandboxControl .timeOfDayComponent button:nth-of-type(2) {
+  height: 40px;
+  width: 100%;
+}
+.sandboxUI .sandboxControl .colorPalette {
+  background-color: hsla(0, 0%, 0%, 0.2);
+  height: calc(60vh - 50px);
+  position: absolute;
+  top: calc(20vh + 50px);
+}
+.sandboxUI.leftControl .sandboxControl:nth-of-type(2) {
+  right: -25vw;
+}
+.sandboxUI.leftControl .sandboxControl:nth-of-type(3) {
+  left: 0;
+}
+.sandboxUI.rightControl .sandboxControl:nth-of-type(2) {
+  right: 0;
+}
+.sandboxUI.rightControl .sandboxControl:nth-of-type(3) {
+  left: -25vw;
+}
+.sandboxUI.miniControl .sandboxControl {
+  width: 50px;
+}
+.sandboxUI.maxControl .sandboxControl {
+  width: 25vw;
+}
 
 .dayMode .sandboxSettings .dayNightToggle {
   background-color: rgb(98, 180, 238);
@@ -640,112 +787,6 @@ button {
 }
 .nightMode .sandboxSettings .dayNightToggle div:nth-child(1) {
   background-color: white;
-}
-
-.activehome .navToggle {
-  background-color: hsl(340, 30%, 15%);
-}
-
-.activeSamplr .navPanel div .samplrBtn {
-  background-color: hsl(214, 29%, 23%);
-  color: white;
-  font-weight: 600;
-}
-.activeSamplr .mainscreen .pageSamplr {
-  top: 15px;
-  transition: top 1s 1.5s;
-}
-.activeSamplr .navToggle {
-  background-color: hsl(214, 29%, 23%);
-}
-
-.activeDesignr .navPanel div .designrBtn {
-  background-color: hsl(318, 20%, 39%);
-  color: white;
-  font-weight: 600;
-}
-.activeDesignr .mainscreen .pageDesignr {
-  top: 15px;
-  transition: top 1s 1.5s;
-}
-.activeDesignr .navToggle {
-  background-color: hsl(318, 20%, 39%);
-}
-
-.activeColeur .navPanel div .coleurBtn {
-  background-color: hsl(0, 0%, 18%);
-  color: white;
-  font-weight: 600;
-}
-.activeColeur .mainscreen .pageColeur {
-  top: 15px;
-  transition: top 1s 1.5s;
-}
-.activeColeur .mainscreen .pageColeur .coleurPalette {
-  color: white;
-}
-.activeColeur .mainscreen .pageColeur .coleurPalette section section button {
-  height: calc(100% - 10px);
-}
-.activeColeur .mainscreen .pageColeur .coleurPalette section .coleurPaint {
-  height: 40px;
-}
-.activeColeur .mainscreen .openPalette .coleurPalette {
-  width: 30%;
-}
-.activeColeur .mainscreen .openPalette .coleurPalette section section {
-  width: calc(100% - 20px);
-}
-.activeColeur .mainscreen .openPalette .coleurPalette section .coleurPaint {
-  width: calc(100% - 20px);
-}
-.activeColeur .mainscreen .closedPalette .coleurPalette {
-  width: 50px;
-}
-.activeColeur .mainscreen .closedPalette .coleurPalette section section {
-  width: 50px;
-}
-.activeColeur .mainscreen .closedPalette .coleurPalette section .coleurPaint {
-  width: calc(100% - 20px);
-}
-.activeColeur .navToggle {
-  background-color: hsl(0, 0%, 18%);
-}
-
-.activeProcessr .navPanel div .processrBtn {
-  background-color: hsl(141, 56%, 26%);
-  color: white;
-  font-weight: 600;
-}
-.activeProcessr .mainscreen .pageProcessr {
-  top: 15px;
-  transition: top 1s 1.5s;
-}
-.activeProcessr .navToggle {
-  background-color: hsl(141, 56%, 26%);
-}
-
-.activeSketchr .navPanel div .sketchrBtn {
-  background-color: hsl(0, 0%, 50%);
-  color: white;
-  font-weight: 600;
-}
-.activeSketchr .mainscreen .pageSketchr {
-  top: 15px;
-  transition: top 1s 1.5s;
-}
-
-.activeScriblr .navPanel div .scriblrBtn {
-  background-color: hsl(330, 30%, 30%);
-  color: white;
-  font-weight: 600;
-}
-.activeScriblr .mainscreen .pageScriblr {
-  top: 15px;
-  transition: top 1s 1.5s;
-}
-.activeScriblr .navToggle {
-  background-color: hsl(330, 30%, 30%);
 }
 
 .sandboxToggleInactive .mainscreen {

@@ -155,6 +155,98 @@ button {
   border-radius: 8px;
   position: absolute;
 }
+.sandboxUI .mainscreen .pageSamplr nav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.sandboxUI .mainscreen .pageSamplr nav button {
+  height: 30px;
+  margin-left: 10px;
+  border-radius: 4px;
+  border: none;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport {
+  background-color: hsla(0, 0%, 0%, 0.1);
+  position: absolute;
+  display: block;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: calc(100% - 60px);
+  width: calc(100% - 240px);
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport::-webkit-scrollbar {
+  background-color: hsla(0, 0%, 0%, 0.2);
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport::-webkit-scrollbar-thumb {
+  background-color: hsla(0, 0%, 0%, 0.2);
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrPages {
+  background-color: red;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrInterfaces {
+  background-color: green;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle {
+  background-color: hsla(0, 0%, 0%, 0.2);
+  width: 200px;
+  height: 40px;
+  margin: 15px;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button {
+  height: 30px;
+  width: 120px;
+  margin: 5px;
+  background-color: skyblue;
+  background-color: black;
+  border: none;
+  position: absolute;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 20px 20px 20px 20px 20px 20px;
+  grid-template-areas: "1 2 3 4 5 6";
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div {
+  width: 15px;
+  height: 15px;
+  background-color: hsla(0, 0%, 100%, 0.2);
+  position: absolute;
+  margin: 0;
+  border-radius: 10px;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(1) {
+  background-color: white;
+  top: 7.5px;
+  left: 7.5px;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(2) {
+  background-color: black;
+  top: 7.5px;
+  left: 12px;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(3) {
+  background-color: yellow;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(4) {
+  background-color: green;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(5) {
+  background-color: blue;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle button div:nth-child(6) {
+  background-color: violet;
+}
+.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle div {
+  position: absolute;
+  right: 5px;
+  margin: 10px 0;
+}
 .sandboxUI .mainscreen .pageDesignr {
   background-color: hsl(318, 20%, 39%);
   border-radius: 8px;
@@ -344,6 +436,158 @@ button {
   height: 30px;
   margin: 5px 5px 0 0;
 }
+.sandboxUI .mainscreen .pageScriblr {
+  background-color: hsl(330, 30%, 30%);
+  border-radius: 8px;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrHeader {
+  position: absolute;
+  background-color: hsla(0, 0%, 0%, 0.2);
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 45px 15px;
+  grid-template-columns: 45px auto 25% 45px;
+  grid-template-areas: "image username search refresh" "progress progress progress progress";
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrHeader img {
+  background-color: hsla(0, 0%, 100%, 0.2);
+  grid-area: image;
+  margin: 7.5px;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrHeader input[type=text] {
+  background-color: hsla(0, 0%, 100%, 0.2);
+  grid-area: search;
+  border: none;
+  margin: 7.5px 0;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 16px;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrHeader button {
+  background-color: hsla(0, 0%, 100%, 0.3);
+  grid-area: refresh;
+  margin: 7.5px;
+  border: none;
+  border-radius: 4px;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrHeader .scriblrUsername {
+  grid-area: username;
+  margin: 5px 5px 5px 0;
+  line-height: 35px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrHeader .scriblrProgress {
+  background-color: hsla(0, 0%, 0%, 0.5);
+  grid-area: progress;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface {
+  background-color: hsla(0, 0%, 0%, 0.1);
+  border-radius: 8px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 80px);
+  overflow: hidden;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface .writerUI {
+  position: absolute;
+  background-color: hsla(0, 0%, 0%, 0.4);
+  width: calc(100% - 20px);
+  height: calc(100% - 10px);
+  margin: 10px 10px 0 10px;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface .writerUI .wShelvesUI {
+  background-color: hsla(0, 0%, 0%, 0.1);
+  display: flexbox;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 25%;
+  overflow-y: scroll;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface .writerUI .wShelvesUI::-webkit-scrollbar {
+  width: 0;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface .writerUI .wShelvesUI .wShelfUI {
+  background-color: hsla(0, 0%, 0%, 0.2);
+  margin: 15px;
+  height: 200px;
+  display: grid;
+  overflow: hidden;
+  grid-template-rows: 40px 160px;
+  grid-template-columns: 100%;
+  grid-template-areas: "project" "books";
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface .writerUI .wShelvesUI .wShelfUI button {
+  height: 40px;
+  background-color: hsla(0, 0%, 0%, 0);
+  grid-area: project;
+  border: none;
+  color: hsla(0, 0%, 100%, 0.4);
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface .writerUI .wShelvesUI .wShelfUI div {
+  height: 150px;
+  width: 100%;
+  grid-area: books;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin: 10px 0 0 0;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface .writerUI .wShelvesUI .wShelfUI div::-webkit-scrollbar {
+  height: 0;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface .writerUI .wShelvesUI .wShelfUI div div {
+  height: 160px;
+  overflow: visible;
+  width: -moz-max-content;
+  width: max-content;
+  background-color: hsla(0, 0%, 0%, 0.3);
+  margin: 0 0 0 10px;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface .writerUI .wShelvesUI .wShelfUI div div button {
+  height: 120px;
+  width: 20px;
+  margin: 40px 5px 0 0;
+  background-color: hsl(330, 30%, 30%);
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface .writerUI .wShelvesUI .wShelfUI div div button:first-child {
+  margin-left: 5px;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface .writerUI .wShelvesUI .wShelfUI div div:first-child {
+  margin-left: 10px;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface .writerUI .wShelvesUI .wShelfUI div div:last-child {
+  margin-right: 10px;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface .writerUI .wBookUI {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 50%;
+  height: 100%;
+}
+.sandboxUI .mainscreen .pageScriblr .scriblrInterface .writerUI .wPagesUI {
+  background-color: hsla(0, 0%, 0%, 0.3);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25%;
+  height: 100%;
+}
 .sandboxUI .sandboxSettings {
   position: absolute;
   top: 15px;
@@ -489,6 +733,19 @@ button {
 .activeSketchr .mainscreen .pageSketchr {
   top: 15px;
   transition: top 1s 1.5s;
+}
+
+.activeScriblr .navPanel div .scriblrBtn {
+  background-color: hsl(330, 30%, 30%);
+  color: white;
+  font-weight: 600;
+}
+.activeScriblr .mainscreen .pageScriblr {
+  top: 15px;
+  transition: top 1s 1.5s;
+}
+.activeScriblr .navToggle {
+  background-color: hsl(330, 30%, 30%);
 }
 
 .sandboxToggleInactive .mainscreen {

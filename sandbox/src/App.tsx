@@ -4,6 +4,7 @@ import Designr from "./pages/designer";
 import Coleur from "./pages/coleur";
 import Processr from "./pages/processr";
 import Sketchr from "./pages/experimentr";
+import Scriblr from "./pages/scriblr";
 
 function App() {
         
@@ -23,19 +24,16 @@ function App() {
             setActivePage('home');
         } else {setActivePage('Samplr')}
     }
-
     function handleDesignrPage() {
         if (activePage === "Designr") {
             setActivePage('home');
         } else {setActivePage('Designr')}
     }
-
     function handleColeurPage() {
         if (activePage === "Coleur") {
             setActivePage('home');
         } else {setActivePage('Coleur')}
     }
-
     function handleProcessrPage() {
         if (activePage === "Processr") {
             setActivePage('home');
@@ -46,7 +44,11 @@ function App() {
             setActivePage('home');
         } else {setActivePage('Sketchr')}
     }
-
+    function handleScriblrPage() {
+        if (activePage === "Scriblr") {
+            setActivePage('home');
+        } else {setActivePage('Scriblr')}
+    }
 
 
     const [lightMode,setLightMode] = useState("night");
@@ -80,10 +82,15 @@ function App() {
                 <button>Components</button>
             </div>
             <div>
-                <button>Scriblr (0.0)</button>
+                <button onClick={handleScriblrPage} className="scriblrBtn">Scriblr (0.0)</button>
+                <button>Drafter</button>
+                <button></button>
             </div>
             <div>
                 <button>Aura</button>
+            </div>
+            <div>
+                <button>Vampyr</button>
             </div>
             <div>
                 <button></button>
@@ -95,6 +102,7 @@ function App() {
             <Coleur/>
             <Processr/>
             <Sketchr/>
+            <Scriblr/>
         </main>
         <div className="sandboxSettings">
             <button className="dayNightToggle" onClick={handleDayNightToggle}>

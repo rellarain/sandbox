@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, MouseEventHandler, useState, useEffect } from "react";
+import React, { ButtonHTMLAttributes, MouseEventHandler, useState, useEffect } from "react";
 import Samplr from "./pages/sampler";
 import Designr from "./pages/designer";
 import Coleur from "./pages/coleur";
@@ -103,7 +103,14 @@ function App() {
     // ----------------------------------------------------------------------------
     
 
-    let colors: number[][] = [[0,40,50,1],[60,40,50,1],[120,40,50,1],[180,40,50,1],[240,40,50,1],[300,40,50,1]]
+    let colors: number[][] = [
+        [0,40,50,1],
+        [60,40,50,1],
+        [120,40,50,1],
+        [180,40,50,1],
+        [240,40,50,1],
+        [300,40,50,1]
+    ]
 
 
     // ----------------------------------------------------------------------------
@@ -287,6 +294,7 @@ const SandboxControl: React.FC<parentState> = ({setControlSideHandler, controlSi
     }
 
     function handleHourPhaseToggle() {
+        // let x = setHourStateHandler(currentHourState);
         setPhaseStateHandler(currentHourPhase)
     }
     function handleManualPhaseToggle() {
@@ -304,41 +312,15 @@ const SandboxControl: React.FC<parentState> = ({setControlSideHandler, controlSi
     }
     
 
-
-
-
-    // ----------------------------------------------------------------------------
-    // Colors
-    // ----------------------------------------------------------------------------
-
     let paints: number[][] = colorsHandler;
 
-    let paint1 = `${"hsla("+paints[0][0]+", "+paints[0][1]+"%, "+paints[0][2]+"%, "+paints[0][3]+")"}`;
-    let paint2 = `${"hsla("+paints[1][0]+", "+paints[1][1]+"%, "+paints[1][2]+"%, "+paints[1][3]+")"}`;
-    let paint3 = `${"hsla("+paints[2][0]+", "+paints[2][1]+"%, "+paints[2][2]+"%, "+paints[2][3]+")"}`;
-    let paint4 = `${"hsla("+paints[3][0]+", "+paints[3][1]+"%, "+paints[3][2]+"%, "+paints[3][3]+")"}`;
-    let paint5 = `${"hsla("+paints[4][0]+", "+paints[4][1]+"%, "+paints[4][2]+"%, "+paints[4][3]+")"}`;
-    let paint6 = `${"hsla("+paints[5][0]+", "+paints[5][1]+"%, "+paints[5][2]+"%, "+paints[5][3]+")"}`;
-    // console.log(paints);
-    
-
-
-    return(
-
-        <div className={'sandboxControl'}>
-            <button onClick={handleClickSize} className="controlSizeToggle">+/-</button>
-            <div className="timeOfDayComponent">
-                <button onClick={handleManualPhaseToggle}></button>
-                <button onClick={handleHourPhaseToggle}>{currentHourState}</button>
-            </div>
-            <ColorPallete/>
-            <button onClick={handleClickSide} className="controlSideToggle">L/R</button>
-        </div>
-
-    )
-}
-
-function ColorPallete() {
+    let paint1 = [paints[0],`${"hsla("+paints[0][0]+", "+paints[0][1]+"%, "+paints[0][2]+"%, "+paints[0][3]+")"}`];
+    let paint2 = [paints[1],`${"hsla("+paints[1][0]+", "+paints[1][1]+"%, "+paints[1][2]+"%, "+paints[1][3]+")"}`];
+    let paint3 = [paints[2],`${"hsla("+paints[2][0]+", "+paints[2][1]+"%, "+paints[2][2]+"%, "+paints[2][3]+")"}`];
+    let paint4 = [paints[3],`${"hsla("+paints[3][0]+", "+paints[3][1]+"%, "+paints[3][2]+"%, "+paints[3][3]+")"}`];
+    let paint5 = [paints[4],`${"hsla("+paints[4][0]+", "+paints[4][1]+"%, "+paints[4][2]+"%, "+paints[4][3]+")"}`];
+    let paint6 = [paints[5],`${"hsla("+paints[5][0]+", "+paints[5][1]+"%, "+paints[5][2]+"%, "+paints[5][3]+")"}`];
+    console.log(paints);
 
     function ColorScale() {
     
@@ -361,16 +343,20 @@ function ColorPallete() {
         )
     }
 
-    function PalettePaint() {
+    const PalettePaint = ({...singleColor}) => {
+        
 
+        let elementStyle: React.CSSProperties = {
+            backgroundColor: singleColor.color[1]
+        }
 
         return (
-            <div >
+            <div className={'palettePaint'} style={elementStyle}>
                 <ColorScale/>
                 <ColorScale/>
-                <input type="range" name="paintHue" min={0} max={359}/>
-                <input type="range" name="paintSat" min={0} max={100}/>
-                <input type="range" name="paintLight" min={0} max={100}/>
+                <input type="range" name="paintHue" min={0} max={359} placeholder={paints[0][0]}/>
+                <input type="range" name="paintSat" min={0} max={100} placeholder={paints[0][1]}/>
+                <input type="range" name="paintLight" min={0} max={100} placeholder={paints[0][2]}/>
             </div>
         )
     }
@@ -378,17 +364,26 @@ function ColorPallete() {
 
     return(
 
-        <div className={'colorPalette'}>
-            <PalettePaint/>
-            <PalettePaint/>
-            <PalettePaint/>
-            <PalettePaint/>
-            <PalettePaint/>
-            <PalettePaint/>
+        <div className={'sandboxControl'}>
+            <button onClick={handleClickSize} className="controlSizeToggle">+/-</button>
+            <div className="timeOfDayComponent">
+                <button onClick={handleManualPhaseToggle}></button>
+                <button onClick={handleHourPhaseToggle}>{currentHourState}</button>
+            </div>
+            <div className={'colorPalette'}>
+                <PalettePaint singleColor={paint1}/>
+                <PalettePaint singleColor={paint2}/>
+                <PalettePaint singleColor={paint3}/>
+                <PalettePaint singleColor={paint4}/>
+                <PalettePaint singleColor={paint5}/>
+                <PalettePaint singleColor={paint6}/>
+            </div>
+            <button onClick={handleClickSide} className="controlSideToggle">L/R</button>
         </div>
 
     )
 }
+
 
 
 export default App;

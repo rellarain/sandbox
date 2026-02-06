@@ -61,7 +61,6 @@ button {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: hsl(340, 19%, 20%);
   display: block;
   overflow: hidden;
   font-family: sans-serif;
@@ -295,9 +294,6 @@ button {
   position: absolute;
   right: 5px;
   margin: 10px 0;
-}
-.sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle.dawn button {
-  background-color: rgb(114, 143, 180);
 }
 .sandboxUI .mainscreen .pageSamplr .samplrViewport .samplrComponents .timeOfDayToggle.dawn button div:nth-child(1) {
   background-color: white;
@@ -733,6 +729,7 @@ button {
   width: 100%;
   height: 20vh;
   background-color: green;
+  overflow: hidden;
 }
 .sandboxUI .sandboxControl .timeOfDayComponent button:nth-of-type(1) {
   height: calc(20vh - 40px);
@@ -749,6 +746,7 @@ button {
   position: absolute;
   top: calc(20vh + 50px);
   grid-auto-rows: 16.6666666667%;
+  overflow: hidden;
 }
 .sandboxUI .sandboxControl .colorPalette .palettePaint {
   height: 16.6666666667%;
@@ -771,6 +769,78 @@ button {
 }
 .sandboxUI.maxControl .sandboxControl {
   width: 25vw;
+}
+.sandboxUI.h00Phase {
+  background-color: black;
+}
+.sandboxUI.h01Phase {
+  background-color: hsl(220, 50%, 5%);
+}
+.sandboxUI.h02Phase {
+  background-color: hsl(220, 50%, 10%);
+}
+.sandboxUI.h03Phase {
+  background-color: hsl(220, 50%, 15%);
+}
+.sandboxUI.h04Phase {
+  background-color: hsl(220, 50%, 20%);
+}
+.sandboxUI.h05Phase {
+  background-color: hsl(220, 50%, 28%);
+}
+.sandboxUI.h06Phase {
+  background-color: hsl(220, 50%, 36%);
+}
+.sandboxUI.h07Phase {
+  background-color: hsl(220, 50%, 44%);
+}
+.sandboxUI.h08Phase {
+  background-color: hsl(220, 50%, 52%);
+}
+.sandboxUI.h09Phase {
+  background-color: hsl(220, 50%, 60%);
+}
+.sandboxUI.h10Phase {
+  background-color: hsl(220, 50%, 66%);
+}
+.sandboxUI.h11Phase {
+  background-color: hsl(220, 50%, 72%);
+}
+.sandboxUI.h12Phase {
+  background-color: hsl(220, 50%, 80%);
+}
+.sandboxUI.h13Phase {
+  background-color: hsl(220, 50%, 72%);
+}
+.sandboxUI.h14Phase {
+  background-color: hsl(220, 50%, 66%);
+}
+.sandboxUI.h15Phase {
+  background-color: hsl(220, 50%, 60%);
+}
+.sandboxUI.h16Phase {
+  background-color: hsl(220, 50%, 52%);
+}
+.sandboxUI.h17Phase {
+  background-color: hsl(220, 50%, 44%);
+}
+.sandboxUI.h18Phase {
+  background-color: hsl(220, 50%, 36%);
+}
+.sandboxUI.h19Phase {
+  background-color: hsl(220, 50%, 28%);
+}
+.sandboxUI.h20Phase {
+  background-color: hsl(220, 50%, 20%);
+}
+.sandboxUI.h21Phase {
+  background-color: hsl(220, 50%, 15%);
+}
+.sandboxUI.h22Phase {
+  background-color: hsl(220, 50%, 10%);
+}
+.sandboxUI.h23Phase {
+  background-color: hsl(220, 50%, 5%);
 }
 
 .dayMode .sandboxSettings .dayNightToggle {

@@ -98,6 +98,33 @@ $sketchrBgColor: hsla(0,0%,50%,1);
 $scriblrBgColor: hsla(330,30%,30%,1);
 
 
+// NEW SANDBOX
+
+$hour00: black;
+$hour01: hsla(220,50,5,1);
+$hour02: hsla(220,50,10,1);
+$hour03: hsla(220,50,15,1);
+$hour04: hsla(220,50,20,1);
+$hour05: hsla(220,50,28,1);
+$hour06: hsla(220,50,36,1);
+$hour07: hsla(220,50,44,1);
+$hour08: hsla(220,50,52,1);
+$hour09: hsla(220,50,60,1);
+$hour10: hsla(220,50,66,1);
+$hour11: hsla(220,50,72,1);
+$hour12: hsla(220,50,80,1);
+$hour13: hsla(220,50,72,1);
+$hour14: hsla(220,50,66,1);
+$hour15: hsla(220,50,60,1);
+$hour16: hsla(220,50,52,1);
+$hour17: hsla(220,50,44,1);
+$hour18: hsla(220,50,36,1);
+$hour19: hsla(220,50,28,1);
+$hour20: hsla(220,50,20,1);
+$hour21: hsla(220,50,15,1);
+$hour22: hsla(220,50,10,1);
+$hour23: hsla(220,50,5,1);
+
 // -----------------------------------------------------------------------------------------------------
 // STATIC STYLING (ALL SIZES)
 // -----------------------------------------------------------------------------------------------------
@@ -108,7 +135,7 @@ $scriblrBgColor: hsla(330,30%,30%,1);
     padding: 0;
     position: absolute;
     top: 0;left: 0; 
-    background-color: $sandboxBgColor;
+    // background-color: $sandboxBgColor;
     display: block;
     overflow: hidden;
     font-family: sans-serif;
@@ -245,35 +272,6 @@ $scriblrBgColor: hsla(330,30%,30%,1);
 
 
 
-                        $dawnSky: rgb(114, 143, 180);
-                        $dawnClouds: hsla(0,50%,50%,1);
-                        $dawnSun: hsla(0,50%,50%,1);
-                        $dawnMoon: hsla(0,50%,50%,1);
-
-                        $morningSky: hsla(0,50%,50%,1);
-                        $morningClouds: hsla(0,50%,50%,1);
-                        $morningSun: hsla(0,50%,50%,1);
-                        $morningMoon: hsla(0,50%,50%,1);
-
-                        $noonSky: hsla(0,50%,50%,1);
-                        $noonClouds: hsla(0,50%,50%,1);
-                        $noonSun: hsla(0,50%,50%,1);
-                        $noonMoon: hsla(0,50%,50%,1);
-
-                        $afternoonSky: hsla(0,50%,50%,1);
-                        $afternoonClouds: hsla(0,50%,50%,1);
-                        $afternoonSun: hsla(0,50%,50%,1);
-                        $afternoonMoon: hsla(0,50%,50%,1);
-                        
-                        $eveningSky: hsla(0,50%,50%,1);
-                        $eveningClouds: hsla(0,50%,50%,1);
-                        $eveningSun: hsla(0,50%,50%,1);
-                        $eveningMoon: hsla(0,50%,50%,1);
-
-                        $nightSky: hsla(0,50%,50%,1);
-                        $nightClouds: hsla(0,50%,50%,1);
-                        $nightSun: hsla(0,50%,50%,1);
-                        $nightMoon: hsla(0,50%,50%,1);
 
 
 
@@ -374,7 +372,6 @@ $scriblrBgColor: hsla(330,30%,30%,1);
                         }
                         &.dawn {
                             button {
-                                background-color: $dawnSky;
                                 div {
                                     &:nth-child(1) {
                                         background-color: white;
@@ -825,6 +822,7 @@ $scriblrBgColor: hsla(330,30%,30%,1);
             width: 100%;
             height: 20vh;
             background-color: green;
+            overflow: hidden;
             button:nth-of-type(1) {
                 height: calc(20vh - 40px);
                 width: 100%;
@@ -841,6 +839,7 @@ $scriblrBgColor: hsla(330,30%,30%,1);
             position: absolute;
             top: calc(20vh + 50px);
             grid-auto-rows: calc(100% / 6);
+            overflow: hidden;
             .palettePaint {
                 height: calc(100% / 6);
                 width: 100%;
@@ -891,6 +890,81 @@ $scriblrBgColor: hsla(330,30%,30%,1);
         .sandboxControl {
             width: 25vw;   
         }
+    }
+
+
+
+    &.h00Phase { // Night: moon, stars, shooting stars
+        background-color: $hour00;
+    }
+    &.h01Phase { // Night
+        background-color: $hour01;
+    }
+    &.h02Phase { // Dawn
+        background-color: $hour02;
+    }
+    &.h03Phase { // Dawn
+        background-color: $hour03;
+    }
+    &.h04Phase { // Dawn
+        background-color: $hour04;
+    }
+    &.h05Phase { // Dawn
+        background-color: $hour05;
+    }
+    &.h06Phase { // Morning
+        background-color: $hour06;
+    }
+    &.h07Phase { // Morning
+        background-color: $hour07;
+    }
+    &.h08Phase { // Morning
+        background-color: $hour08;
+    }
+    &.h09Phase { // Morning
+        background-color: $hour09;
+    }
+    &.h10Phase { // Noon
+        background-color: $hour10;
+    }
+    &.h11Phase { // Noon
+        background-color: $hour11;
+    }
+    &.h12Phase { // Noon
+        background-color: $hour12;
+    }
+    &.h13Phase { // Noon
+        background-color: $hour13;
+    }
+    &.h14Phase { // Afternoon
+        background-color: $hour14;
+    }
+    &.h15Phase { // Afternoon
+        background-color: $hour15;
+    }
+    &.h16Phase { // Afternoon
+        background-color: $hour16;
+    }
+    &.h17Phase { // Afternoon
+        background-color: $hour17;
+    }
+    &.h18Phase { // Evening
+        background-color: $hour18;
+    }
+    &.h19Phase { // Evening
+        background-color: $hour19;
+    }
+    &.h20Phase { // Evening
+        background-color: $hour20;
+    }
+    &.h21Phase { // Evening
+        background-color: $hour21;
+    }
+    &.h22Phase { // Night: moon, stars, constellations
+        background-color: $hour22;
+    }
+    &.h23Phase { // Night: moon, stars, shooting stars
+        background-color: $hour23;
     }
 
 }

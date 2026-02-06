@@ -118,9 +118,7 @@ function App() {
     // ----------------------------------------------------------------------------
 
     const now: Date = new Date();
-    function formatDate(date: number | Date | undefined) {
-        return new Intl.DateTimeFormat('en-us', {weekday: 'long', month: 'short', day: '2-digit', year:'numeric'}).format(date);
-    }
+ 
 
     let nowHours: number = new Date().getHours();
     let [defaultHourPhase,setDefaultHourPhase]=useState<string>('');
@@ -169,7 +167,7 @@ function App() {
 
 
     return(
-    <div className={"sandboxUI active"+activePage+" sandboxToggle"+sandboxToggleState+" "+lightMode+"Mode "+controlState+" "+phaseState+"Phase"}>
+    <div className={"sandboxUI active"+activePage+" sandboxToggle"+sandboxToggleState+" "+lightMode+"Mode "+controlState+" h"+nowHours+"Phase"}>
         <button className="navToggle" onClick={handleSandboxToggle}>{activePage+" "+viewportColumns+", "+viewportRows}</button>
         <nav className="navPanel">
             <div>
@@ -346,17 +344,13 @@ const SandboxControl: React.FC<parentState> = ({setControlSideHandler, controlSi
     const PalettePaint = ({...singleColor}) => {
         
 
-        let elementStyle: React.CSSProperties = {
-            backgroundColor: singleColor.color[1]
-        }
-
         return (
-            <div className={'palettePaint'} style={elementStyle}>
+            <div className={'palettePaint'} >
                 <ColorScale/>
                 <ColorScale/>
-                <input type="range" name="paintHue" min={0} max={359} placeholder={paints[0][0]}/>
-                <input type="range" name="paintSat" min={0} max={100} placeholder={paints[0][1]}/>
-                <input type="range" name="paintLight" min={0} max={100} placeholder={paints[0][2]}/>
+                <input type="range" name="paintHue" min={0} max={359}/>
+                <input type="range" name="paintSat" min={0} max={100} />
+                <input type="range" name="paintLight" min={0} max={100}/>
             </div>
         )
     }
@@ -367,16 +361,16 @@ const SandboxControl: React.FC<parentState> = ({setControlSideHandler, controlSi
         <div className={'sandboxControl'}>
             <button onClick={handleClickSize} className="controlSizeToggle">+/-</button>
             <div className="timeOfDayComponent">
-                <button onClick={handleManualPhaseToggle}></button>
-                <button onClick={handleHourPhaseToggle}>{currentHourState}</button>
+                <button></button>
+                <button>{currentHourState}</button>
             </div>
             <div className={'colorPalette'}>
-                <PalettePaint singleColor={paint1}/>
-                <PalettePaint singleColor={paint2}/>
-                <PalettePaint singleColor={paint3}/>
-                <PalettePaint singleColor={paint4}/>
-                <PalettePaint singleColor={paint5}/>
-                <PalettePaint singleColor={paint6}/>
+                <PalettePaint/>
+                <PalettePaint/>
+                <PalettePaint/>
+                <PalettePaint/>
+                <PalettePaint/>
+                <PalettePaint/>
             </div>
             <button onClick={handleClickSide} className="controlSideToggle">L/R</button>
         </div>

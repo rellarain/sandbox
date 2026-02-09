@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, MouseEventHandler, useState, useEffect } from "react";
+import React, { ButtonHTMLAttributes, MouseEventHandler, useState, useEffect, useRef } from "react";
 import Samplr from "./pages/sampler";
 import Designr from "./pages/designer";
 import Coleur from "./pages/coleur";
@@ -83,20 +83,30 @@ function App() {
     // ----------------------------------------------------------------------------
 
 
-    const [controlSide, setControlSide] = useState<string>('right');
-    const [controlSize, setControlSize] = useState<string>('mini');
-    let controlState = `${controlSize+'Control '+ controlSide +'Control'}`;
+    const [controlSide, setControlSide] = useState<string>('R');
+    const [controlLock, setControlLock] = useState<string>('Unlocked');
+    let controlState : string = `${'control' + controlSide + controlLock }`;
 
     function handleControlSide() {
-        if (controlSide === 'right') {
-            setControlSide('left')
-        } else {setControlSide('right')}
+        if (controlSide === 'R') {
+            setControlSide('L')
+        } else {setControlSide('R')}
     }
-    function handleControlSize() {
-        if (controlSize === 'mini') {
-            setControlSize('max')
-        } else {setControlSize('mini')}    
+
+
+
+    function handleControlLockL() {
+        if (controlLock === 'Unlocked') {
+            setControlLock('LockedL')
+        } else {setControlLock('Unlocked')}
     }
+
+    function handleControlLockR() {
+        if (controlLock === 'Unlocked') {
+            setControlLock('LockedR')
+        } else {setControlLock('Unlocked')}
+    }
+
 
     // ----------------------------------------------------------------------------
     // COLOR SCHEME DEFINITION
@@ -116,136 +126,51 @@ function App() {
     // ----------------------------------------------------------------------------
     // Time and Date !!!!!!!!!!!!!!!!----BROKEN
     // ----------------------------------------------------------------------------
+    const [activePhase,setActivePhase] = useState('night')
 
     const now: Date = new Date();
- 
-
-    let nowHours: number = new Date().getHours();
-    let [defaultHourPhase,setDefaultHourPhase]=useState<string>('');
-    useEffect(() => {
-        if (nowHours >= 2 && nowHours < 6) {
-            defaultHourPhase = "dawn";
-        } else if (nowHours >= 6 && nowHours < 10) {
-            defaultHourPhase = "morning";
-        } else if (nowHours >= 10 && nowHours < 14) {
-            defaultHourPhase = "noon";
-        } else if (nowHours >= 14 && nowHours < 18) {
-            defaultHourPhase = "afternoon";
-        } else if (nowHours >= 18 && nowHours < 22) {
-            defaultHourPhase = "evening";
-        } else {defaultHourPhase = 'night'}
-        console.log(defaultHourPhase)
-        setDefaultHourPhase(defaultHourPhase)
-    },[])
+    let nowHours: number = now.getHours();
     
-    let [hoursPhase,setHoursPhase] = useState<string>(defaultHourPhase)
-    const [phaseState,setPhaseState] = useState<string>(hoursPhase)
-    
-    console.log(hoursPhase);
-    
-    function handleHourPhaseToggle() {
-        setHoursPhase(defaultHourPhase);
-        
-    }
-
-    function handlePhaseToggle() {
-        if (phaseState === 'night') {
-            setPhaseState('dawn')
-        } else if (phaseState === 'dawn') {
-            setPhaseState('morning')
-        } else if (phaseState === 'morning') {
-            setPhaseState('noon')
-        } else if (phaseState === 'noon') {
-            setPhaseState('afternoon')
-        } else if (phaseState === 'afternoon') {
-            setPhaseState('evening')
-        } else {setPhaseState('night')}
-    }
 
 
 
+
+
+    let controlStates : string[] = [controlSide,controlLock];
+
+
+    // ----------------------------------------------------------------------------
+    // PAGE STATE MANAGEMENT
+    // ----------------------------------------------------------------------------
+
+
+    let pageStates = 
+        " " + "active"+ activePage +
+        " " + activePhase + "Mode"+
+        " " + controlState
+    ;
 
 
     return(
-    <div className={"sandboxUI active"+activePage+" sandboxToggle"+sandboxToggleState+" "+lightMode+"Mode "+controlState+" h"+nowHours+"Phase"}>
-        <button className="navToggle" onClick={handleSandboxToggle}>{activePage+" "+viewportColumns+", "+viewportRows}</button>
-        <nav className="navPanel">
-            <div>
-                <button onClick={handleColeurPage} className="coleurBtn">Coleur</button>
-            </div>
-            <div>
-                <button onClick={handleDesignrPage} className="designrBtn">Designr</button>
-            </div>
-            <div>
-                <button onClick={handleExperimentrPage} className="sketchrBtn">Sketchr</button>
-            </div>
-            <div>
-                <button onClick={handleProcessrPage} className="processrBtn">Processr</button>
-            </div>
-            <div>
-                <button onClick={handleSamplrPage} className="samplrBtn">Samplr</button>
-                <button>Pages</button>
-                <button>Components</button>
-            </div>
-            <div>
-                <button onClick={handleScriblrPage} className="scriblrBtn">Scriblr (0.0)</button>
-                <button>Drafter</button>
-                <button></button>
-            </div>
-            <div>
-                <button>Aura</button>
-            </div>
-            <div>
-                <button>Vampyr</button>
-            </div>
-            <div>
-                <button></button>
-            </div>
-        </nav>
-        <main className="mainscreen">
-            <Samplr/>
-            <Designr/>
-            <Coleur/>
-            <Processr/>
-            <Sketchr/>
-            <Scriblr/>
-        </main>
-        <div className="sandboxSettings">
-            <button className="dayNightToggle" onClick={handleDayNightToggle}>
-                <div></div>
-                <div></div>
-            </button>
-        </div>
+    <div className={"sandboxUI"+pageStates}>
 
-        {/* NEW SANDBOX */} 
-
+        <ConsoleContainer/>
         <SandboxControl 
-            setControlSideHandler={handleControlSide}
-            controlSideState = {controlSide}
-            setControlSizeHandler={handleControlSize}
-            controlSizeState= {controlSize}
-            colorsHandler = {colors}
-            currentHourState={nowHours}
-            setPhaseStateHandler={handlePhaseToggle}
-            setHourStateHandler={handleHourPhaseToggle}
-            currentPhaseState={phaseState}
-            currentHourPhase={hoursPhase}
-            
+            pControlStates={controlStates}
+            sideChangeHandler={handleControlSide}
+            lockChangeHandlerL={handleControlLockL}
+            lockChangeHandlerR={handleControlLockR}
+            controllerSide="L"
             />
         <SandboxControl 
-            setControlSideHandler={handleControlSide}
-            controlSideState = {controlSide}
-            setControlSizeHandler={handleControlSize}
-            controlSizeState= {controlSize}
-            colorsHandler = {colors}
-            currentHourState={nowHours}
-            setPhaseStateHandler={handlePhaseToggle}
-            setHourStateHandler={handleHourPhaseToggle}
-            currentPhaseState={phaseState}
-            currentHourPhase={hoursPhase}
-
-
+            pControlStates={controlStates}
+            sideChangeHandler={handleControlSide}
+            lockChangeHandlerL={handleControlLockL}
+            lockChangeHandlerR={handleControlLockR}
+            controllerSide="R"
         />
+
+
     </div>
 )}
 
@@ -259,125 +184,113 @@ function App() {
 // ----------------------------------------------------------------------------
 // SANDBOX CONTROL COMPONENT
 // ----------------------------------------------------------------------------
-
-
-
-interface parentState {
-    setControlSideHandler: (controlSide : string) => void
-    controlSideState: string
-    setControlSizeHandler: (controlSize : string) => void
-    controlSizeState: string
-    setPhaseStateHandler: (phaseState : string) => void
-    currentPhaseState: string
-    setHourStateHandler: (nowHours: number) => void
-    currentHourState: number
-    currentHourPhase: string
-    
-    colorsHandler: number[][]
+interface ControlStates {
+    controllerSide: string,
+    pControlStates: string[],
+    sideChangeHandler: () => void
+    lockChangeHandlerL: () => void
+    lockChangeHandlerR: () => void
 }
 
 
-const SandboxControl: React.FC<parentState> = ({setControlSideHandler, controlSideState, setControlSizeHandler, currentHourPhase, controlSizeState, setPhaseStateHandler, currentPhaseState, setHourStateHandler, currentHourState, colorsHandler}) => {
 
-    function handleClickSize() {
-        if (controlSizeState === 'mini') {
-            setControlSizeHandler('max');
-        } else {setControlSizeHandler('mini')}
-    }
-    function handleClickSide() {
-        if (controlSideState === 'right') {
-            setControlSideHandler('left');
-        } else {setControlSideHandler('right')}
-        
+
+function SandboxControl({controllerSide, pControlStates, sideChangeHandler, lockChangeHandlerL, lockChangeHandlerR} : ControlStates) {
+    
+    function handleUnlockEvent() {
+        if (controllerSide === 'L') {
+            lockChangeHandlerL();
+        } else {lockChangeHandlerR();}
+
     }
 
-    function handleHourPhaseToggle() {
-        // let x = setHourStateHandler(currentHourState);
-        setPhaseStateHandler(currentHourPhase)
-    }
-    function handleManualPhaseToggle() {
-        if (currentPhaseState === 'night') {
-            setPhaseStateHandler('dawn')
-        } else if (currentPhaseState === 'dawn') {
-            setPhaseStateHandler('morning')
-        } else if (currentPhaseState === 'morning') {
-            setPhaseStateHandler('noon')
-        } else if (currentPhaseState === 'noon') {
-            setPhaseStateHandler('afternoon')
-        } else if (currentPhaseState === 'afternoon') {
-            setPhaseStateHandler('evening')
-        } else {setPhaseStateHandler('night')}
-    }
+    const [sizeState,setSizeState] = useState('Min');
     
-
-    let paints: number[][] = colorsHandler;
-
-    let paint1 = [paints[0],`${"hsla("+paints[0][0]+", "+paints[0][1]+"%, "+paints[0][2]+"%, "+paints[0][3]+")"}`];
-    let paint2 = [paints[1],`${"hsla("+paints[1][0]+", "+paints[1][1]+"%, "+paints[1][2]+"%, "+paints[1][3]+")"}`];
-    let paint3 = [paints[2],`${"hsla("+paints[2][0]+", "+paints[2][1]+"%, "+paints[2][2]+"%, "+paints[2][3]+")"}`];
-    let paint4 = [paints[3],`${"hsla("+paints[3][0]+", "+paints[3][1]+"%, "+paints[3][2]+"%, "+paints[3][3]+")"}`];
-    let paint5 = [paints[4],`${"hsla("+paints[4][0]+", "+paints[4][1]+"%, "+paints[4][2]+"%, "+paints[4][3]+")"}`];
-    let paint6 = [paints[5],`${"hsla("+paints[5][0]+", "+paints[5][1]+"%, "+paints[5][2]+"%, "+paints[5][3]+")"}`];
-    console.log(paints);
-
-    function ColorScale() {
-    
-    
-        return(
-    
-            <div className={'colorScale'}>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-    
-        )
-    }
-
-    const PalettePaint = ({...singleColor}) => {
-        
-
-        return (
-            <div className={'palettePaint'} >
-                <ColorScale/>
-                <ColorScale/>
-                <input type="range" name="paintHue" min={0} max={359}/>
-                <input type="range" name="paintSat" min={0} max={100} />
-                <input type="range" name="paintLight" min={0} max={100}/>
-            </div>
-        )
+    function sizeChangeHandler() {
+        if (sizeState === 'Min') {
+            setSizeState('Max');
+        } else {setSizeState('Min')}
     }
 
 
     return(
 
-        <div className={'sandboxControl'}>
-            <button onClick={handleClickSize} className="controlSizeToggle">+/-</button>
-            <div className="timeOfDayComponent">
-                <button></button>
-                <button>{currentHourState}</button>
+        <div className={'sandboxController sandboxController'+controllerSide+sizeState}>
+            <button>Phase {pControlStates.toString()}</button>
+            <button></button>
+            <div className="controllerToggles">
+                <button className={"controllerSizeToggle"} onClick={sizeChangeHandler}>{sizeState}</button>
+                <button className={"controllerSideToggle"} onClick={sideChangeHandler}>{pControlStates[0]}</button>
+                <button className={"controllerLock"+controllerSide+"Toggle"} onClick={handleUnlockEvent}>{controllerSide+pControlStates[2]}</button>
             </div>
-            <div className={'colorPalette'}>
-                <PalettePaint/>
-                <PalettePaint/>
-                <PalettePaint/>
-                <PalettePaint/>
-                <PalettePaint/>
-                <PalettePaint/>
-            </div>
-            <button onClick={handleClickSide} className="controlSideToggle">L/R</button>
         </div>
 
     )
 }
 
+
+
+// ----------------------------------------------------------------------------
+// CONSOLE CONTAINER
+// ----------------------------------------------------------------------------
+
+
+function ConsoleContainer() {
+
+    const elementRef = useRef<HTMLDivElement>(null);
+    const [width, setWidth] = useState<number>(0);
+    const [height, setHeight] = useState<number>(0);
+
+
+
+    useEffect(() => {
+        function handleResize() {
+            if (elementRef.current) {
+                const elementWidth = elementRef.current.clientWidth;
+                const elementHeight = elementRef.current.clientHeight;
+                setWidth(elementWidth);
+                setHeight(elementHeight);
+            }
+        }
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+    
+    let colQuant : number = 320;
+    let colWidth : number = width/colQuant;
+    let rowHeight : number = height/colQuant;
+
+
+
+    return(
+
+        <div className={'consoleContainer'} ref={elementRef}>
+            {width+"px width / "+height+"px height"}
+            <br/> {colWidth.toFixed(2)+" columns / "+rowHeight.toFixed(2)+" rows ("+colQuant+"px units)"}
+            <br/> 
+            <br/> 
+            <br/> 
+            <br/> 
+            <br/> 
+            <br/> 
+            <br/> 
+            <br/> 
+            SANDBOX: no icon; displays gallery of subpages <br/> 
+            <br/> TOOLBOX: wrench & pencil; 
+            <br/> TOYBOX: various icons; for fun/silly projects
+            <br/> MAILBOX: letter icon; for copy and communication styling
+            <br/> BLACKBOX: black square; for data manipulation/handling
+            <br/> GEARBOX: gear icon; displays how sandbox features work (day mode, etc.)
+            <br/> JUNKBOX: 
+            <br/> SHADOWBOX: framed painting icon; for digital art and UI showcasing
+            <br/> 
+            <br/> 
+            <br/> 
+            <br/> 
+        </div>
+
+    )
+}
 
 
 export default App;

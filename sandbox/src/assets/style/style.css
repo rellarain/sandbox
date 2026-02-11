@@ -75,19 +75,49 @@ button {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: hsl(0, 0%, 0%);
+  background-color: hsl(340, 19%, 20%);
 }
 .sandboxUI .sandboxController {
   position: absolute;
   top: 0;
   height: 100vh;
   overflow: hidden;
-  transition: left 1s, width 1s;
+  transition: left 1s, width 1s, right 1s;
+}
+.sandboxUI .sandboxController .phaseToggle {
+  width: calc(100% - 10px);
+  height: 160px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  border-radius: 4px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.226);
+}
+.sandboxUI .sandboxController nav {
+  position: absolute;
+  top: 165px;
+  margin: 5px;
+  background-color: rgba(0, 0, 0, 0.578);
+  border: 5px solid transparent;
+  transition: height 1s, width 1s, left 1s;
+  overflow-x: hidden;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+.sandboxUI .sandboxController nav button {
+  margin: 0 0 5px 0;
+  width: 100%;
+  height: 30px;
+  border-radius: 4px;
 }
 .sandboxUI .sandboxController .controllerToggles {
   position: absolute;
   bottom: 0;
+  transition: width 1s;
   width: 50px;
+  height: 85px;
 }
 .sandboxUI .sandboxController .controllerToggles button {
   height: 35px;
@@ -96,25 +126,101 @@ button {
   border-radius: 4px;
   border: none;
   overflow: hidden;
+  font-weight: 700;
+  font-size: 20px;
 }
-.sandboxUI .sandboxController:nth-of-type(2) {
-  background-color: rgb(170, 170, 170);
+.sandboxUI .sandboxController.sandboxControllerL {
   left: 0;
 }
-.sandboxUI .sandboxController:nth-of-type(2) .controllerToggles {
+.sandboxUI .sandboxController.sandboxControllerL .controllerToggles {
   left: 0;
 }
-.sandboxUI .sandboxController:nth-of-type(3) {
-  background-color: rgb(56, 56, 56);
+.sandboxUI .sandboxController.sandboxControllerR {
   right: 0;
 }
-.sandboxUI .sandboxController:nth-of-type(3) .controllerToggles {
+.sandboxUI .sandboxController.sandboxControllerR .controllerToggles {
   right: 0;
 }
 .sandboxUI .consoleContainer {
   position: absolute;
   height: 100vh;
-  width: calc(100vw - 100px);
+  padding: 0 0 0 10px;
   top: 0;
+  transition: left 1s, width 1s;
+}
+.sandboxUI.controlL.sandboxControllerMin .sandboxController {
+  width: 50px;
+}
+.sandboxUI.controlL.sandboxControllerMin .sandboxControllerL {
+  left: 0;
+}
+.sandboxUI.controlL.sandboxControllerMin .sandboxControllerR {
+  right: -50px;
+}
+.sandboxUI.controlL.sandboxControllerMin .consoleContainer {
   left: 50px;
+  width: calc(100% - 60px);
+}
+.sandboxUI.controlL.sandboxControllerMax .sandboxController {
+  width: 400px;
+}
+.sandboxUI.controlL.sandboxControllerMax .sandboxControllerL {
+  left: 0;
+}
+.sandboxUI.controlL.sandboxControllerMax .sandboxControllerR {
+  right: -400px;
+}
+.sandboxUI.controlL.sandboxControllerMax .consoleContainer {
+  left: 400px;
+  width: calc(100% - 410px);
+}
+.sandboxUI.controlR.sandboxControllerMax .sandboxController {
+  width: 400px;
+}
+.sandboxUI.controlR.sandboxControllerMax .sandboxControllerL {
+  left: -400px;
+}
+.sandboxUI.controlR.sandboxControllerMax .sandboxControllerR {
+  right: 0;
+}
+.sandboxUI.controlR.sandboxControllerMax .consoleContainer {
+  left: 0;
+  width: calc(100% - 410px);
+}
+.sandboxUI.controlR.sandboxControllerMin .sandboxController {
+  width: 50px;
+}
+.sandboxUI.controlR.sandboxControllerMin .sandboxControllerL {
+  left: -50px;
+}
+.sandboxUI.controlR.sandboxControllerMin .sandboxControllerR {
+  right: 0;
+}
+.sandboxUI.controlR.sandboxControllerMin .consoleContainer {
+  left: 0;
+  width: calc(100% - 60px);
+}
+.sandboxUI.sandboxControllerMax .sandboxController nav {
+  width: calc(100% - 65px);
+  height: calc(100% - 190px);
+}
+.sandboxUI.sandboxControllerMax .sandboxController nav::-webkit-scrollbar {
+  width: 15px;
+}
+.sandboxUI.sandboxControllerMax .sandboxController nav::-webkit-scrollbar-thumb {
+  background-color: hsla(0, 0%, 100%, 0.5);
+  border-radius: 4px;
+}
+.sandboxUI.sandboxControllerMax .sandboxControllerL nav {
+  left: 47.5px;
+}
+.sandboxUI.sandboxControllerMin .sandboxController nav {
+  width: calc(100% - 20px);
+  height: calc(100% - 270px);
+}
+.sandboxUI.sandboxControllerMin .sandboxController nav::-webkit-scrollbar {
+  width: 0;
+}
+.sandboxUI.sandboxControllerMin .sandboxControllerL nav {
+  left: 0;
 }/*# sourceMappingURL=style.css.map */

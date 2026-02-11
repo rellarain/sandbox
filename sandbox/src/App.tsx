@@ -24,40 +24,6 @@ function App() {
 
 
 
-    const [activePage, setActivePage] = useState('home');
-
-    function handleSamplrPage() {
-        if (activePage === "Samplr") {
-            setActivePage('home');
-        } else {setActivePage('Samplr')}
-    }
-    function handleDesignrPage() {
-        if (activePage === "Designr") {
-            setActivePage('home');
-        } else {setActivePage('Designr')}
-    }
-    function handleColeurPage() {
-        if (activePage === "Coleur") {
-            setActivePage('home');
-        } else {setActivePage('Coleur')}
-    }
-    function handleProcessrPage() {
-        if (activePage === "Processr") {
-            setActivePage('home');
-        } else {setActivePage('Processr')}
-    }
-    function handleExperimentrPage() {
-        if (activePage === "Sketchr") {
-            setActivePage('home');
-        } else {setActivePage('Sketchr')}
-    }
-    function handleScriblrPage() {
-        if (activePage === "Scriblr") {
-            setActivePage('home');
-        } else {setActivePage('Scriblr')}
-    }
-
-
     const [lightMode,setLightMode] = useState("night");
 
     const handleDayNightToggle = () => {
@@ -84,8 +50,8 @@ function App() {
 
 
     const [controlSide, setControlSide] = useState<string>('R');
-    const [controlLock, setControlLock] = useState<string>('Unlocked');
-    let controlState : string = `${'control' + controlSide + controlLock }`;
+    const [controlSize, setControlSize] = useState<string>('Min');
+    let controlState : string = `${'control' + controlSide }`;
 
     function handleControlSide() {
         if (controlSide === 'R') {
@@ -93,19 +59,12 @@ function App() {
         } else {setControlSide('R')}
     }
 
-
-
-    function handleControlLockL() {
-        if (controlLock === 'Unlocked') {
-            setControlLock('LockedL')
-        } else {setControlLock('Unlocked')}
+    function handleControlSize() {
+        if (controlSize === 'Min') {
+            setControlSize('Max')
+        } else {setControlSize('Min')}
     }
 
-    function handleControlLockR() {
-        if (controlLock === 'Unlocked') {
-            setControlLock('LockedR')
-        } else {setControlLock('Unlocked')}
-    }
 
 
     // ----------------------------------------------------------------------------
@@ -128,15 +87,13 @@ function App() {
     // ----------------------------------------------------------------------------
     const [activePhase,setActivePhase] = useState('night')
 
-    const now: Date = new Date();
-    let nowHours: number = now.getHours();
-    
+    const now: Date = new Date();    
 
 
 
 
 
-    let controlStates : string[] = [controlSide,controlLock];
+    let controlStates : string[] = [controlSide,controlSize];
 
 
     // ----------------------------------------------------------------------------
@@ -145,9 +102,9 @@ function App() {
 
 
     let pageStates = 
-        " " + "active"+ activePage +
-        " " + activePhase + "Mode"+
-        " " + controlState
+    " " + activePhase + "Mode"+
+    " " + controlState +
+    " sandboxController" + controlSize
     ;
 
 
@@ -158,16 +115,16 @@ function App() {
         <SandboxControl 
             pControlStates={controlStates}
             sideChangeHandler={handleControlSide}
-            lockChangeHandlerL={handleControlLockL}
-            lockChangeHandlerR={handleControlLockR}
             controllerSide="L"
+            sizeChangeHandler={handleControlSize}
+            currentTime={now}
             />
         <SandboxControl 
             pControlStates={controlStates}
             sideChangeHandler={handleControlSide}
-            lockChangeHandlerL={handleControlLockL}
-            lockChangeHandlerR={handleControlLockR}
             controllerSide="R"
+            sizeChangeHandler={handleControlSize}
+            currentTime={now}
         />
 
 
@@ -188,40 +145,39 @@ interface ControlStates {
     controllerSide: string,
     pControlStates: string[],
     sideChangeHandler: () => void
-    lockChangeHandlerL: () => void
-    lockChangeHandlerR: () => void
+    sizeChangeHandler: () => void
+    currentTime: Date
 }
 
 
 
 
-function SandboxControl({controllerSide, pControlStates, sideChangeHandler, lockChangeHandlerL, lockChangeHandlerR} : ControlStates) {
+function SandboxControl({controllerSide, pControlStates, sideChangeHandler, sizeChangeHandler, currentTime} : ControlStates) {
     
-    function handleUnlockEvent() {
-        if (controllerSide === 'L') {
-            lockChangeHandlerL();
-        } else {lockChangeHandlerR();}
+    let sizeState = pControlStates[1];
 
-    }
+    let sizeIcon;
+    if (sizeState === "Min") {
+        sizeIcon = "+";
+    } else {sizeIcon = "-"}
 
-    const [sizeState,setSizeState] = useState('Min');
-    
-    function sizeChangeHandler() {
-        if (sizeState === 'Min') {
-            setSizeState('Max');
-        } else {setSizeState('Min')}
-    }
-
+    let hours = currentTime.getHours()%12;
+    let minutes = currentTime.getMinutes().toString();
+    let clockTime = hours + ":" + minutes.padStart(2,"0");
 
     return(
 
-        <div className={'sandboxController sandboxController'+controllerSide+sizeState}>
-            <button>Phase {pControlStates.toString()}</button>
-            <button></button>
+        <div className={'sandboxController sandboxController'+controllerSide}>
+            <button className="phaseToggle">Phase {clockTime}</button>
+            <nav>
+                <button></button>
+                <button></button>
+                <button></button>
+                <button></button>
+            </nav>
             <div className="controllerToggles">
-                <button className={"controllerSizeToggle"} onClick={sizeChangeHandler}>{sizeState}</button>
+                <button className={"controllerSizeToggle"} onClick={sizeChangeHandler}>{sizeIcon}</button>
                 <button className={"controllerSideToggle"} onClick={sideChangeHandler}>{pControlStates[0]}</button>
-                <button className={"controllerLock"+controllerSide+"Toggle"} onClick={handleUnlockEvent}>{controllerSide+pControlStates[2]}</button>
             </div>
         </div>
 
@@ -230,7 +186,7 @@ function SandboxControl({controllerSide, pControlStates, sideChangeHandler, lock
 
 
 
-// ----------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // CONSOLE CONTAINER
 // ----------------------------------------------------------------------------
 
@@ -252,8 +208,9 @@ function ConsoleContainer() {
                 setHeight(elementHeight);
             }
         }
+        window.addEventListener('load', handleResize);
         window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        return () => {window.removeEventListener('resize', handleResize), window.removeEventListener('load', handleResize)};
     }, []);
     
     let colQuant : number = 320;

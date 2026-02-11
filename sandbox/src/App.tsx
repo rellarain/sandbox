@@ -141,6 +141,8 @@ function App() {
 // ----------------------------------------------------------------------------
 // SANDBOX CONTROL COMPONENT
 // ----------------------------------------------------------------------------
+
+
 interface ControlStates {
     controllerSide: string,
     pControlStates: string[],
@@ -148,7 +150,6 @@ interface ControlStates {
     sizeChangeHandler: () => void
     currentTime: Date
 }
-
 
 
 
@@ -161,14 +162,60 @@ function SandboxControl({controllerSide, pControlStates, sideChangeHandler, size
         sizeIcon = "+";
     } else {sizeIcon = "-"}
 
-    let hours = currentTime.getHours()%12;
-    let minutes = currentTime.getMinutes().toString();
-    let clockTime = hours + ":" + minutes.padStart(2,"0");
+    let hours12: number = currentTime.getHours()%12;
+    let hours24: number = currentTime.getHours();
+    let minutes: string = currentTime.getMinutes().toString();
+    let clockTime: string = hours12 + ":" + minutes.padStart(2,"0");
+
+    
+    const [hourPhase, setHourPhase] = useState('night');
+    useEffect(() => {
+        function handleTime() {
+            if (hours24 <= 2) {
+                return setHourPhase('night');
+            } else if (hours24 <= 6) {
+                return setHourPhase('dawn');
+            } else if (hours24 <= 10) {
+                return setHourPhase('morning');
+            } else if (hours24 <= 14) {
+                return setHourPhase('noon');
+            } else if (hours24 <= 18) {
+                return setHourPhase('afternoon');
+            } else if (hours24 <= 22) {
+                return setHourPhase('evening');
+            } else {return setHourPhase('night')}
+        }
+        window.addEventListener('load', handleTime);
+        return () => {window.removeEventListener('load', handleTime)};
+    }, []);
+
+
 
     return(
 
         <div className={'sandboxController sandboxController'+controllerSide}>
-            <button className="phaseToggle">Phase {clockTime}</button>
+            <div className="phaseToggle">
+                <div className="skyScene">
+                    {hourPhase}
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <button></button>
+                <button>{clockTime} </button>
+            </div>
             <nav>
                 <button></button>
                 <button></button>

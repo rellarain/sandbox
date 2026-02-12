@@ -195,8 +195,28 @@ function SandboxControl({controllerSide, pControlStates, sideChangeHandler, size
 
         <div className={'sandboxController sandboxController'+controllerSide}>
             <div className="phaseToggle">
-                <div className="skyScene">
+                <div className={"skyScene "+"Sky"}>
                     {hourPhase}
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                     <div></div>
                     <div></div>
                     <div></div>

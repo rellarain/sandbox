@@ -97,6 +97,7 @@ button {
 }
 .sandboxUI .sandboxController .phaseToggle .skyScene {
   background-color: rgb(78, 169, 212);
+  background-image: radial-gradient(circle at top, hsla(0, 100%, 0%, 0), hsl(220, 60%, 40%));
   width: 400px;
   height: 100%;
   display: flex;

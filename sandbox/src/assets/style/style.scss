@@ -99,6 +99,17 @@ $scriblrBgColor: hsla(330,30%,30%,1);
 
 
 
+$Sun: hsla(0, 100%, 100%, 1);
+$Moon: hsla(220, 60%, 40%, 1);
+$Sky1: hsla(220, 60%, 40%, 1);
+$Sky2: radial-gradient(circle at top, hsla(0, 100%, 0%, 0), $Sky1);
+$Clouds1: hsla(220, 60%, 40%, 1);
+$Clouds2: hsla(220, 60%, 40%, 1);
+$Clouds3: hsla(220, 60%, 40%, 1);
+
+
+
+
 // -----------------------------------------------------------------------------------------------------
 // STATIC STYLING (ALL SIZES)
 // -----------------------------------------------------------------------------------------------------
@@ -149,6 +160,7 @@ $scriblrBgColor: hsla(330,30%,30%,1);
 
             .skyScene {
                 background-color: rgb(78, 169, 212);
+                background-image: $Sky2;
                 width: 400px;
                 height: 100%;
                 display: flex;

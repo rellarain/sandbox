@@ -1,36 +1,9 @@
 import React, { ButtonHTMLAttributes, MouseEventHandler, useState, useEffect, useRef } from "react";
-import Samplr from "./pages/sampler";
-import Designr from "./pages/designer";
-import Coleur from "./pages/coleur";
-import Processr from "./pages/processr";
-import Sketchr from "./pages/experimentr";
-import Scriblr from "./pages/scriblr";
 import useWindowDimensions from "./assets/functionality/viewport";
 
 
 function App() {
 
-
-    
-        
-    const [sandboxToggleState, setSandboxToggleState] = useState("Inactive");
-    function handleSandboxToggle() {
-        if (sandboxToggleState !== "Active") {
-            setSandboxToggleState('Active');
-        } else {setSandboxToggleState('Inactive')}
-    }
-
-    
-
-
-
-    const [lightMode,setLightMode] = useState("night");
-
-    const handleDayNightToggle = () => {
-        if (lightMode !== "night") {
-            setLightMode("night")
-        } else {setLightMode("day")}
-    } 
 
     // ----------------------------------------------------------------------------
     // ----------------------------------------------------------------------------
@@ -134,10 +107,6 @@ function App() {
 
 
 
-
-
-
-
 // ----------------------------------------------------------------------------
 // SANDBOX CONTROL COMPONENT
 // ----------------------------------------------------------------------------
@@ -162,15 +131,22 @@ function SandboxControl({controllerSide, pControlStates, sideChangeHandler, size
         sizeIcon = "+";
     } else {sizeIcon = "-"}
 
+
+    // ----------------------------------------------------------------------------
+    // Sky Toggle Design
+    // ----------------------------------------------------------------------------
+
     let hours12: number = currentTime.getHours()%12;
     let hours24: number = currentTime.getHours();
     let minutes: string = currentTime.getMinutes().toString();
     let clockTime: string = hours12 + ":" + minutes.padStart(2,"0");
 
-    
     const [hourPhase, setHourPhase] = useState('night');
+    const [phaseState, setPhaseState] = useState(hourPhase);
+    
+
     useEffect(() => {
-        function handleTime() {
+        function handleTimePhase() {
             if (hours24 <= 2) {
                 return setHourPhase('night');
             } else if (hours24 <= 6) {
@@ -182,70 +158,27 @@ function SandboxControl({controllerSide, pControlStates, sideChangeHandler, size
             } else if (hours24 <= 18) {
                 return setHourPhase('afternoon');
             } else if (hours24 <= 22) {
-                return setHourPhase('evening');
+                return setHourPhase('dusk');
             } else {return setHourPhase('night')}
         }
-        window.addEventListener('load', handleTime);
-        return () => {window.removeEventListener('load', handleTime)};
+        window.addEventListener('load', handleTimePhase);
+        return () => {window.removeEventListener('load', handleTimePhase)};
     }, []);
+
+
+
 
 
 
     return(
 
         <div className={'sandboxController sandboxController'+controllerSide}>
-            <div className="phaseToggle">
-                <div className={"skyScene "+"Sky"}>
-                    {hourPhase}
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <button></button>
-                <button>{clockTime} </button>
-            </div>
-            <nav>
-                <button></button>
-                <button></button>
+            <div className={"phaseToggle"}></div>
+            <nav className={"pageButtons"}></nav>
+            <nav className={"controlButtons"}>
                 <button></button>
                 <button></button>
             </nav>
-            <div className="controllerToggles">
-                <button className={"controllerSizeToggle"} onClick={sizeChangeHandler}>{sizeIcon}</button>
-                <button className={"controllerSideToggle"} onClick={sideChangeHandler}>{pControlStates[0]}</button>
-            </div>
         </div>
 
     )
@@ -289,28 +222,8 @@ function ConsoleContainer() {
     return(
 
         <div className={'consoleContainer'} ref={elementRef}>
-            {width+"px width / "+height+"px height"}
-            <br/> {colWidth.toFixed(2)+" columns / "+rowHeight.toFixed(2)+" rows ("+colQuant+"px units)"}
-            <br/> 
-            <br/> 
-            <br/> 
-            <br/> 
-            <br/> 
-            <br/> 
-            <br/> 
-            <br/> 
-            SANDBOX: no icon; displays gallery of subpages <br/> 
-            <br/> TOOLBOX: wrench & pencil; 
-            <br/> TOYBOX: various icons; for fun/silly projects
-            <br/> MAILBOX: letter icon; for copy and communication styling
-            <br/> BLACKBOX: black square; for data manipulation/handling
-            <br/> GEARBOX: gear icon; displays how sandbox features work (day mode, etc.)
-            <br/> JUNKBOX: 
-            <br/> SHADOWBOX: framed painting icon; for digital art and UI showcasing
-            <br/> 
-            <br/> 
-            <br/> 
-            <br/> 
+            {width+"px width / "+height+"px height"} ----- {colWidth.toFixed(2)+" columns / "+rowHeight.toFixed(2)+" rows ("+colQuant+"px units)"}
+
         </div>
 
     )

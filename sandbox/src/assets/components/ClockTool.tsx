@@ -5,9 +5,9 @@ function ClockTool() {
 
     return(
 
-        <div className={'clockTool'}>
+        <nav className={'clockTool'}>
             
-        </div>
+        </nav>
 
     )
 }

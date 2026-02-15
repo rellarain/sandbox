@@ -1,5 +1,6 @@
 import React, { ButtonHTMLAttributes, MouseEventHandler, useState, useEffect, useRef } from "react";
 import useWindowDimensions from "./assets/functionality/viewport";
+import ClockTool from "./assets/components/ClockTool";
 
 
 function App() {
@@ -173,8 +174,8 @@ function SandboxControl({controllerSide, pControlStates, sideChangeHandler, size
     return(
 
         <div className={'sandboxController sandboxController'+controllerSide}>
-            <div className={"phaseToggle"}></div>
-            <nav className={"pageButtons"}></nav>
+            <ClockTool/>
+            <nav className={"pageButtons"}>g</nav>
             <nav className={"controlButtons"}>
                 <button></button>
                 <button></button>

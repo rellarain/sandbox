@@ -1,12 +1,16 @@
 import React from "react"
 
-function ClockTool() {
+interface TimeInfo {
+    clockNow: string
+}
+
+function ClockTool({clockNow} : TimeInfo) {
 
 
     return(
 
         <nav className={'clockTool'}>
-            
+            {clockNow}
         </nav>
 
     )

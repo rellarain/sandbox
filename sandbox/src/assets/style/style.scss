@@ -53,8 +53,8 @@ button {cursor: pointer;}
 // VARIABLES
 // -----------------------------------------------------------------------------------------------------
 
-$sandboxBgColor: hsl(340, 19%, 20%);
-$sandboxAccentActive: hsl(340, 50%, 40%);
+$sandboxBgColor: hsl(339, 48%, 47%);
+$sandboxAccentActive: hsl(340, 65%, 38%);
 $sandboxAccentInactive: hsl(340, 30%, 15%);
 
 
@@ -95,7 +95,7 @@ $processrBgColor: hsl(141, 56%, 26%);
 
 $sketchrBgColor: hsla(0,0%,50%,1);
 
-$scriblrBgColor: hsla(330,30%,30%,1);
+$scriblrBgColor: hsl(329, 70%, 48%);
 
 
 
@@ -138,70 +138,63 @@ $scriblrBgColor: hsla(330,30%,30%,1);
         bottom: 0;
         overflow: hidden;
         transition: left 1s, width 1s, right 1s, height 1s;
-        nav {
-            position: absolute;
-            background-color: $sandboxBgColor;
-            border-radius: 4px;
-            transition: width 1s, height 1s;
-            button {transition: width 1s, height 1s; padding: 0;}
-        }
-        .phaseToggle {
-            width: calc(100% - 20px); 
-            height: 200px;
-            background-color: skyblue;
-        }
+        height: 100vh;
+        // background-color: rgba(0, 0, 0, 0.393);
+        background-color: rgba(0, 0, 0, 0.15);
+
+
         .pageButtons {
-            width: calc(100% - 20px);
-            height: calc(100vh - 230px);
-            background-color: hsla(0, 0%, 0%, 0.382);
-
+            top: 0;
+            
         }
+
+
+
         .controlButtons {
+            position: absolute;
             bottom: 0;
-
-            height: 50px; width: 30px; 
-            height: 70px; width: 40px;
-            height: 115px; width: 60px;
-
-
+            left: 0;
+            width: 100%;
             button {
-                width: 10px; height: 10px; 
-                width: 20px; height: 20px; 
-                width: 40px; height: 40px; 
-                margin: 10px 0 0 10px;
-                border-radius: 4px; border: none;
+                margin: 0 0 10px 10px;
+                width: calc(100% - 20px);
+                height: 15px;
+                border-radius: 4px;
+                border: none;
+                padding: 0;
             }
-        }        
+        }
+        
 
         &.sandboxControllerL {
             left: 0;
-            height: 100vh; border-radius: 0;
-            width: 80px;
-            // width: 400px;
+            height: 100vh; 
+            border-radius: 0;
 
             nav {left: 10px;}
-            .phaseToggle { top: 10px;}
-            .pageButtons {top: 220px;}
             .controlButtons {
                 left: 0;
-                border-radius: 0 8px 0 0;
+                button {
+                    height: 30px;
+                }
             }
         }
         &.sandboxControllerR {
             right: 0;
-            height: 55px; width: 30px; border-radius: 8px 0 0 0;
-            height: 75px; width: 40px; border-radius: 8px 0 0 0;
-            height: 100vh; width: 80px; border-radius: 0;
+            
 
             nav {
                 right: 10px;
             }
 
-            .phaseToggle {top: 10px;}
-            .pageButtons {top: 220px;}
             .controlButtons {
                 bottom: 0;right: 0;
                 border-radius: 8px 0 0 0;
+
+                button {
+                    height: 10px; 
+                    height: 20px;
+                }
 
             }
             
@@ -210,17 +203,15 @@ $scriblrBgColor: hsla(330,30%,30%,1);
     
     .consoleContainer {
         position: absolute;
-        height: calc(100vh - 20px);
-        top: 10px;
+        height: 100vh;
+        top: 0;
         text-align: center;
         transition: left 1s, width 1s;
-        background-color: rgba(0, 0, 0, 0.15);
-        border-radius: 8px;
 
 
         width: calc(100vw - 90px);
 
-        left: 80px;
+        left: 50px;
         
 
     }
@@ -231,7 +222,90 @@ $scriblrBgColor: hsla(330,30%,30%,1);
     // SANDBOX CONTROL TOGGLES
     // ---------------------------------------------------------------
 
-
+    &.noPage {
+        &.leftControl {
+            &.maxControl {
+                .sandboxController {width: 30px;}
+            }
+            &.minControl {
+                .sandboxController {width: 30px;}
+            }
+        }
+        &.rightControl {
+            &.maxControl {
+                .sandboxController {width: 30px;}
+            }
+            &.minControl {
+                .sandboxController {width: 30px;}
+            }
+        }
+    }
+    &.activePage {
+        &.leftControl {
+            &.unlockedControl {
+                &.maxControl {
+                    .sandboxControllerL {width: 400px;}
+                    .sandboxControllerR {width: 40px;}
+                }
+                &.minControl {
+                    .sandboxControllerL {width: 50px;}
+                    .sandboxControllerR {width: 40px;}
+                }
+            }
+            &.lockedLControl {
+                &.maxControl {
+                    .sandboxControllerL {width: 400px;}
+                    .sandboxControllerR {width: 30px;}
+                }
+                &.minControl {
+                    .sandboxControllerL {width: 50px;}
+                    .sandboxControllerR {width: 30px;}
+                }
+            }
+            &.lockedRControl {
+                &.maxControl {
+                    .sandboxControllerL {width: 400px;}
+                    .sandboxControllerR {width: 30px;}
+                }
+                &.minControl {
+                    .sandboxControllerL {width: 50px;}
+                    .sandboxControllerR {width: 40px;}
+                }
+            }
+        }
+        &.rightControl {
+            &.unlockedControl {
+                &.maxControl {
+                    .sandboxControllerL {width: 40px;}
+                    .sandboxControllerR {width: 400px;}
+                }
+                &.minControl {
+                    .sandboxControllerL {width: 40px;}
+                    .sandboxControllerR {width: 50px;}
+                }
+            }
+            &.lockedLControl {
+                &.maxControl {
+                    .sandboxControllerL {width: 40px;}
+                    .sandboxControllerR {width: 400px;}
+                }
+                &.minControl {
+                    .sandboxControllerL {width: 40px;}
+                    .sandboxControllerR {width: 50px;}
+                }
+            }
+            &.lockedRControl {
+                &.maxControl {
+                    .sandboxControllerL {width: 30px;}
+                    .sandboxControllerR {width: 400px;}
+                }
+                &.minControl {
+                    .sandboxControllerL {width: 30px;}
+                    .sandboxControllerR {width: 50px;}
+                }
+            }
+        }
+    }
 
 
 }
@@ -241,14 +315,20 @@ $scriblrBgColor: hsla(330,30%,30%,1);
 // -----------------------------------------------------------------------------------------------------
 
 
+
+
 // -----------------------------------------------------------------------------------------------------
 // STATIC STYLING (WIDTH DEPENDENT)
 // -----------------------------------------------------------------------------------------------------
 
 
+
+
 // -----------------------------------------------------------------------------------------------------
 // STATIC STYLING (HEIGHT AND WIDTH DEPENDENT)
 // -----------------------------------------------------------------------------------------------------
+
+
 
 
 // -----------------------------------------------------------------------------------------------------
@@ -264,9 +344,13 @@ $scriblrBgColor: hsla(330,30%,30%,1);
 // -----------------------------------------------------------------------------------------------------
 
 
+
+
 // -----------------------------------------------------------------------------------------------------
 // DYNAMIC STYLING (WIDTH DEPENDENT)
 // -----------------------------------------------------------------------------------------------------
+
+
 
 
 // -----------------------------------------------------------------------------------------------------

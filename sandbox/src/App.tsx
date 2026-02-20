@@ -23,22 +23,48 @@ function App() {
     // ----------------------------------------------------------------------------
 
 
-    const [controlSide, setControlSide] = useState<string>('R');
-    const [controlSize, setControlSize] = useState<string>('Min');
+    const [controlSide, setControlSide] = useState<string>('right');
+    const [controlSize, setControlSize] = useState<string>('min');
+    const [controlLock, setControlLock] = useState<string>('unlocked');
+    const [pageState,setPageState] = useState<string>('active')
+    const [activePage,setActivePage] = useState<string>('inactive')
     let controlState : string = `${'control' + controlSide }`;
 
     function handleControlSide() {
-        if (controlSide === 'R') {
-            setControlSide('L')
-        } else {setControlSide('R')}
+        if (controlSide === 'right') {
+            setControlSide('left')
+        } else {setControlSide('right')}
     }
+
 
     function handleControlSize() {
-        if (controlSize === 'Min') {
-            setControlSize('Max')
-        } else {setControlSize('Min')}
+        if (controlSize === 'min') {
+            setControlSize('max')
+        } else {setControlSize('min')}
     }
 
+
+    function handleControlLockL() {
+        if (controlLock === 'lockedL') {
+            setControlLock('unlocked')
+        } else {setControlSize('lockedL')}
+    }
+    function handleControlLockR() {
+        if (controlLock === 'lockedR') {
+            setControlLock('unlocked')
+        } else {setControlSize('lockedR')}
+    }
+
+
+    function handleClearPage() {
+        setPageState('no');
+        setActivePage('inactive');
+    }
+
+
+    function handleOpenPage() {
+        setPageState('active');
+    }
 
 
     // ----------------------------------------------------------------------------
@@ -77,8 +103,11 @@ function App() {
 
     let pageStates = 
     " " + activePhase + "Mode"+
-    " " + controlState +
-    " sandboxController" + controlSize
+    " " + pageState + "Page" +
+    " " + controlSide + "Control" +
+    " " + controlLock + "Control" +
+    " " + controlSize + "Control" +
+    " " + activePage
     ;
 
 
@@ -92,6 +121,10 @@ function App() {
             controllerSide="L"
             sizeChangeHandler={handleControlSize}
             currentTime={now}
+            pageChangeHandler={handleClearPage}
+            lockLChangeHandler={handleControlLockL}
+            lockRChangeHandler={handleControlLockR}
+            activeChangeHandler={handleOpenPage}
             />
         <SandboxControl 
             pControlStates={controlStates}
@@ -99,6 +132,10 @@ function App() {
             controllerSide="R"
             sizeChangeHandler={handleControlSize}
             currentTime={now}
+            pageChangeHandler={handleClearPage}
+            lockLChangeHandler={handleControlLockL}
+            lockRChangeHandler={handleControlLockR}
+            activeChangeHandler={handleOpenPage}
         />
 
 
@@ -118,12 +155,20 @@ interface ControlStates {
     pControlStates: string[],
     sideChangeHandler: () => void
     sizeChangeHandler: () => void
+    pageChangeHandler: () => void
+    lockLChangeHandler: () => void
+    lockRChangeHandler: () => void
+    activeChangeHandler: () => void
     currentTime: Date
 }
 
 
 
-function SandboxControl({controllerSide, pControlStates, sideChangeHandler, sizeChangeHandler, currentTime} : ControlStates) {
+function SandboxControl({
+    controllerSide, pControlStates, sideChangeHandler, 
+    sizeChangeHandler, currentTime, pageChangeHandler,
+    lockLChangeHandler, lockRChangeHandler, activeChangeHandler
+    } : ControlStates) {
     
     let sizeState = pControlStates[1];
 
@@ -174,11 +219,13 @@ function SandboxControl({controllerSide, pControlStates, sideChangeHandler, size
     return(
 
         <div className={'sandboxController sandboxController'+controllerSide}>
-            <ClockTool/>
-            <nav className={"pageButtons"}>g</nav>
+            <nav className={"pageButtons"}>
+                <ClockTool clockNow={clockTime}/>
+
+            </nav>
             <nav className={"controlButtons"}>
-                <button></button>
-                <button></button>
+                <button onClick={sizeChangeHandler}>+-</button>
+                <button onClick={sideChangeHandler}>LR</button>
             </nav>
         </div>
 
